@@ -1,0 +1,12 @@
+node_modules
+dist
+.DS_Store
+*.local
+.vite
+
+# Claude Code 관련 파일 — 레포에 올리지 않음
+.claude/
+CLAUDE.md
+
+# 카카오톡 원본 대화 (개인정보) — 레포에 올리지 않음
+KakaoTalk_*.txt
