@@ -3,81 +3,80 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="D4D Track 1 — Counter-UAS 예상 주제 10선 (주최측 연계) · Team AEGIS" />
-<title>D4D · Track 1 예상 주제 10선 — Counter-UAS</title>
+<meta name="description" content="D4D Track 1 — Counter-UAS 주제 10선 (팀 가능성순·자원 포함) · Team AEGIS" />
+<title>D4D · Track 1 주제 10선 — 팀 가능성순</title>
 <style>
   :root{
-    --bg:#05080c; --bg-2:#0a1119;
-    --panel:rgba(255,255,255,.035); --brd:rgba(255,255,255,.09);
+    --bg:#05080c; --panel:rgba(255,255,255,.035); --brd:rgba(255,255,255,.09);
     --ink:#e8f0f5; --muted:#8aa0b0; --green:#00e5a0; --blue:#37b6ff;
     --green-dim:rgba(0,229,160,.1);
+    --jch:#00e5a0; --lmh:#37b6ff; --khj:#b388ff; --kyj:#ffb74d; --kjh:#ff6b6b;
     --font:'Pretendard',system-ui,-apple-system,'Segoe UI',Roboto,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;
     --mono:'JetBrains Mono','SFMono-Regular',ui-monospace,Menlo,Consolas,monospace;
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
-  body{
-    margin:0; color:var(--ink); font-family:var(--font); -webkit-font-smoothing:antialiased;
-    background:
-      radial-gradient(1100px 600px at 50% -10%, #0e2a23 0%, transparent 60%),
-      radial-gradient(800px 500px at 85% 110%, #0a1a2e 0%, transparent 60%),
-      var(--bg);
-    min-height:100vh;
-  }
-  .wrap{max-width:1080px; margin:0 auto; padding:0 24px 100px;}
+  body{margin:0; color:var(--ink); font-family:var(--font); -webkit-font-smoothing:antialiased;
+    background:radial-gradient(1100px 600px at 50% -10%,#0e2a23 0,transparent 60%),
+      radial-gradient(800px 500px at 85% 110%,#0a1a2e 0,transparent 60%),var(--bg); min-height:100vh;}
+  .wrap{max-width:880px; margin:0 auto; padding:0 22px 100px;}
 
-  .back{display:inline-flex; align-items:center; gap:7px; margin:26px 0 0;
-    padding:7px 14px; border:1px solid var(--brd); border-radius:999px; background:var(--panel);
+  .back{display:inline-flex; align-items:center; gap:7px; margin:26px 0 0; padding:7px 14px;
+    border:1px solid var(--brd); border-radius:999px; background:var(--panel);
     color:var(--green); text-decoration:none; font-size:.82rem; font-weight:700; font-family:var(--mono);}
   .back:hover{border-color:var(--green);}
 
-  header.hero{padding:48px 0 30px; border-bottom:1px solid var(--brd); margin-bottom:46px;}
+  header.hero{padding:46px 0 28px; border-bottom:1px solid var(--brd); margin-bottom:30px;}
   .tag{font-family:var(--mono); font-size:.72rem; letter-spacing:.25em; color:var(--green); text-transform:uppercase;}
-  h1{font-size:clamp(1.9rem,5vw,3.1rem); line-height:1.12; letter-spacing:-.02em; margin:16px 0 14px;}
+  h1{font-size:clamp(1.8rem,5vw,2.9rem); line-height:1.14; letter-spacing:-.02em; margin:16px 0 14px;}
   h1 .hl{background:linear-gradient(120deg,var(--green),var(--blue)); -webkit-background-clip:text; background-clip:text; color:transparent;}
-  .lead{color:var(--muted); font-size:1.02rem; line-height:1.7; max-width:780px; margin:0;}
-  .note{margin-top:18px; font-size:.82rem; color:var(--muted); font-family:var(--mono);}
-  .note b{color:var(--green);}
+  .lead{color:var(--muted); font-size:1rem; line-height:1.7; margin:0;}
+  .lead b{color:var(--green);}
 
-  .legend{display:flex; flex-wrap:wrap; gap:8px; margin:22px 0 0;}
-  .lyr{font-family:var(--mono); font-size:.7rem; letter-spacing:.06em; padding:4px 10px; border-radius:6px;
-    border:1px solid var(--brd); color:var(--muted);}
+  /* team roster */
+  .roster{margin:26px 0 6px;}
+  .roster__t{font-family:var(--mono); font-size:.66rem; letter-spacing:.18em; color:var(--muted); text-transform:uppercase; margin-bottom:10px;}
+  .roster__grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:8px;}
+  .mem{border:1px solid var(--brd); border-left-width:3px; border-radius:8px; padding:9px 12px; background:var(--panel);}
+  .mem b{font-size:.92rem;}
+  .mem span{display:block; font-family:var(--mono); font-size:.66rem; color:var(--muted); margin-top:2px;}
 
-  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(330px,1fr)); gap:16px;}
-  .card{position:relative; display:flex; flex-direction:column; background:var(--panel); border:1px solid var(--brd);
-    border-radius:16px; padding:22px 22px 20px; overflow:hidden; transition:border-color .25s, transform .25s;}
-  .card:hover{border-color:rgba(0,229,160,.4); transform:translateY(-3px);}
-  .card::before{content:""; position:absolute; inset:0 auto 0 0; width:3px;
-    background:linear-gradient(var(--green),var(--blue)); opacity:0; transition:opacity .25s;}
-  .card:hover::before{opacity:1;}
-  .num{font-family:var(--mono); font-size:.78rem; color:var(--green); letter-spacing:.1em;}
-  .ttl{font-size:1.16rem; font-weight:800; margin:8px 0 2px; letter-spacing:-.01em; line-height:1.3;}
-  .en{font-family:var(--mono); font-size:.72rem; color:var(--muted); letter-spacing:.04em; text-transform:uppercase;}
-  .desc{color:#c7d4dd; font-size:.9rem; line-height:1.6; margin:12px 0 14px;}
-  .chips{display:flex; flex-wrap:wrap; gap:6px; margin-bottom:14px;}
-  .chip{font-family:var(--mono); font-size:.7rem; padding:3px 9px; border-radius:6px;
-    background:var(--green-dim); color:var(--green); border:1px solid rgba(0,229,160,.25);}
+  .cards{display:flex; flex-direction:column; gap:14px; margin-top:30px;}
+  .card{position:relative; background:var(--panel); border:1px solid var(--brd); border-radius:16px;
+    padding:20px 22px; transition:border-color .25s;}
+  .card:hover{border-color:rgba(0,229,160,.35);}
+  .chead{display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-bottom:4px;}
+  .rk{font-family:var(--mono); font-weight:800; font-size:1.05rem; color:var(--green);}
+  .feas{font-family:var(--mono); font-size:.66rem; font-weight:700; padding:3px 9px; border-radius:999px; letter-spacing:.04em; margin-left:auto;}
+  .f5{background:rgba(0,229,160,.16); color:var(--green); border:1px solid rgba(0,229,160,.4);}
+  .f4{background:rgba(55,182,255,.14); color:var(--blue); border:1px solid rgba(55,182,255,.4);}
+  .f3{background:rgba(255,183,77,.14); color:var(--kyj); border:1px solid rgba(255,183,77,.4);}
+  .f2{background:rgba(255,138,80,.14); color:#ff8a50; border:1px solid rgba(255,138,80,.4);}
+  .f1{background:rgba(255,107,107,.14); color:var(--kjh); border:1px solid rgba(255,107,107,.4);}
+  .ttl{font-size:1.16rem; font-weight:800; letter-spacing:-.01em; margin:2px 0 1px; line-height:1.3;}
+  .en{font-family:var(--mono); font-size:.7rem; color:var(--muted); letter-spacing:.04em; text-transform:uppercase;}
+  .link{display:inline-flex; align-items:center; gap:8px; margin:11px 0 0; padding:5px 11px; border-radius:8px;
+    background:rgba(55,182,255,.07); border:1px solid rgba(55,182,255,.22);}
+  .link__t{font-family:var(--mono); font-size:.58rem; letter-spacing:.1em; color:var(--muted); text-transform:uppercase;}
+  .link__c{font-family:var(--mono); font-size:.74rem; color:var(--blue); font-weight:700;}
+  .vision{color:#c7d4dd; font-size:.92rem; line-height:1.62; margin:13px 0 0;}
+  .fit{font-size:.86rem; line-height:1.6; margin:9px 0 0; color:var(--muted);}
+  .fit b{color:var(--ink);}
+  .mtag{font-family:var(--mono); font-weight:700; font-size:.8em;}
 
-  /* 주최측 연계 배지 */
-  .link{display:flex; align-items:center; gap:9px; flex-wrap:wrap; margin:auto 0 14px;
-    padding:10px 12px; border-radius:10px; background:rgba(55,182,255,.07); border:1px solid rgba(55,182,255,.22);}
-  .link__t{font-family:var(--mono); font-size:.6rem; letter-spacing:.12em; color:var(--muted);
-    border:1px solid var(--brd); border-radius:5px; padding:2px 7px; text-transform:uppercase; white-space:nowrap;}
-  .link__c{font-family:var(--mono); font-size:.78rem; color:var(--blue); font-weight:700;}
+  .res{margin-top:14px; border-top:1px solid var(--brd); padding-top:13px; display:flex; flex-direction:column; gap:9px;}
+  .r{display:grid; grid-template-columns:92px 1fr; gap:10px; align-items:start;}
+  .rl{font-family:var(--mono); font-size:.64rem; letter-spacing:.06em; text-transform:uppercase; color:var(--muted);
+    border:1px solid var(--brd); border-radius:5px; padding:3px 0; text-align:center;}
+  .rl.hw{color:var(--kjh); border-color:rgba(255,107,107,.3);}
+  .rl.inf{color:var(--blue); border-color:rgba(55,182,255,.3);}
+  .rv{font-size:.84rem; line-height:1.55; color:#cdd8e0;}
+  .rv code{font-family:var(--mono); font-size:.82em; background:rgba(255,255,255,.05); padding:1px 6px; border-radius:5px; color:#e8f0f5;}
+  .warn{color:var(--kjh); font-size:.8rem; margin-top:6px; font-family:var(--mono);}
 
-  .meta{display:flex; align-items:center; justify-content:space-between; gap:10px;
-    border-top:1px solid var(--brd); padding-top:12px;}
-  .layers{display:flex; gap:6px; flex-wrap:wrap;}
-  .L{font-family:var(--mono); font-size:.66rem; padding:2px 7px; border-radius:5px; border:1px solid var(--brd); color:var(--muted);}
-  .L.fe{color:#00e5a0; border-color:rgba(0,229,160,.35);}
-  .L.be{color:#37b6ff; border-color:rgba(55,182,255,.35);}
-  .L.ai{color:#b388ff; border-color:rgba(179,136,255,.35);}
-  .L.da{color:#ffb74d; border-color:rgba(255,183,77,.35);}
-  .L.dm{color:#ff6b6b; border-color:rgba(255,107,107,.35);}
-  .diff{font-family:var(--mono); font-size:.72rem; color:var(--muted); white-space:nowrap;}
-  .diff b{color:var(--green); letter-spacing:.1em;}
+  @media(max-width:540px){ .r{grid-template-columns:1fr;} .rl{display:inline-block; padding:3px 10px;} }
 
-  footer{margin-top:54px; padding-top:22px; border-top:1px solid var(--brd);
+  footer{margin-top:48px; padding-top:22px; border-top:1px solid var(--brd);
     display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
     font-family:var(--mono); font-size:.74rem; color:var(--muted);}
   footer a{color:var(--green); text-decoration:none;}
@@ -90,121 +89,169 @@
 
   <header class="hero">
     <div class="tag">D4D · Track 1 — Counter-UAS (Anti-Drone)</div>
-    <h1>예상 <span class="hl">Track 1</span> 주제 10선</h1>
-    <p class="lead">자율·무인 시스템 및 대드론(Counter-UAS) 트랙 예상 주제 10가지를, <b style="color:var(--green)">주최측 회사·인물의 실제 제품 방향성에 직접 연계</b>되도록 재구성했습니다.
-      각 카드의 <span style="color:var(--blue)">주최측 연계</span> 배지는 그 주제가 어느 심사·멘토 진영의 관심사와 맞물리는지를 가리킵니다. 모두 24시간 안에 프로토타입 배포가 가능한 범위입니다.</p>
-    <p class="note">※ 공식 주제가 아닌 <b>팀 내부 예측</b>이며, 주최측 정렬도를 기준으로 선별했습니다.</p>
-    <div class="legend">
-      <span class="lyr">FE Frontend</span><span class="lyr">BE Backend</span><span class="lyr">AI AI</span><span class="lyr">DA Data</span><span class="lyr">DM Domain</span>
+    <h1>Track 1 주제 10선 <span class="hl">· 팀 가능성순</span></h1>
+    <p class="lead">24시간 MVP 제약을 풀고 <b>완성형 시스템 규모</b>로 범위를 넓힌 뒤, TEAM AEGIS 5인의 실제 분야에 비춘 <b>실현 가능성(팀 적합도) 순</b>으로 정렬했습니다.
+      각 주제마다 주최측 연계 · 넓은 범위 비전 · <b>필요 기술스택 / 하드웨어 / 인프라·자원</b>을 함께 담았습니다.</p>
+
+    <div class="roster">
+      <div class="roster__t">// Team Fields</div>
+      <div class="roster__grid">
+        <div class="mem" style="border-left-color:var(--jch)"><b>JCH</b><span>Product · Frontend / iOS</span></div>
+        <div class="mem" style="border-left-color:var(--lmh)"><b>LMH</b><span>Backend · Infra / ex-임베디드·EV</span></div>
+        <div class="mem" style="border-left-color:var(--khj)"><b>KHJ</b><span>AI Engineer / LLM</span></div>
+        <div class="mem" style="border-left-color:var(--kyj)"><b>KYJ</b><span>Data / 항공안전·예측(ex-Boeing)</span></div>
+        <div class="mem" style="border-left-color:var(--kjh)"><b>KJH</b><span>Domain / 안티드론 재머 펌웨어</span></div>
+      </div>
     </div>
   </header>
 
-  <div class="grid">
+  <div class="cards">
 
+    <!-- 1 -->
     <article class="card">
-      <div class="num">01</div>
-      <div class="ttl">자연어 음성 1인–다(多)무인기 오케스트레이션</div>
-      <div class="en">Voice C2 · One-to-Many UAS</div>
-      <p class="desc">통신이 차단된 전장에서 운용자 1명이 온디바이스 음성 명령으로 다수 무인기에 정찰·대응 임무를 동시 배분. Prairie Schooner의 PEGASUS·DIU 오케스트레이터 챌린지를 정조준한다.</p>
-      <div class="chips"><span class="chip">온디바이스 음성AI</span><span class="chip">자연어 임무배분</span><span class="chip">엣지 추론</span></div>
-      <div class="link"><span class="link__t">주최측 연계</span><span class="link__c">Prairie Schooner (김기연)</span></div>
-      <div class="meta"><div class="layers"><span class="L ai">AI</span><span class="L be">BE</span></div><div class="diff"><b>난이도</b> ★★★</div></div>
+      <div class="chead"><span class="rk">#1</span><span class="ttl">LLM 교전 의사결정 코파일럿 (ROE/COA)</span><span class="feas f5">가능성 매우 높음</span></div>
+      <div class="en">LLM Engagement Decision Copilot</div>
+      <div class="link"><span class="link__t">주최측 연계</span><span class="link__c">EGCED Tech · Claude Bloom · Morph</span></div>
+      <p class="vision">단발 챗봇이 아니라, 실시간 융합 트랙을 입력받아 교전수칙(ROE)·교범 근거로 가능한 모든 방책(COA)을 생성·비교·설명하고, 교전 후 디브리핑까지 자동화하는 의사결정 지원 체계. 한·영 연합작전 지원으로 확장.</p>
+      <p class="fit"><b>팀 적합:</b> <span class="mtag" style="color:var(--khj)">KHJ</span> LLM·<span class="mtag" style="color:var(--jch)">JCH</span> 대시보드·<span class="mtag" style="color:var(--kjh)">KJH</span> ROE 현실성·<span class="mtag" style="color:var(--kyj)">KYJ</span> 위협 데이터 — 거의 전원 소프트웨어, 팀 LLM 강점 정중앙.</p>
+      <div class="res">
+        <div class="r"><span class="rl">기술스택</span><span class="rv">Claude/LLM <code>tool-use</code> · RAG(<code>pgvector</code>/Chroma) · LangGraph 에이전트 · React 대시보드 · WebSocket</span></div>
+        <div class="r"><span class="rl hw">하드웨어</span><span class="rv">없음 — 시연용 노트북·대형 디스플레이</span></div>
+        <div class="r"><span class="rl inf">인프라·자원</span><span class="rv">LLM API(Anthropic 크레딧) 또는 사내 GPU 추론 · 벡터DB · Docker 백엔드 · ROE/교범 코퍼스</span></div>
+      </div>
     </article>
 
+    <!-- 2 -->
     <article class="card">
-      <div class="num">02</div>
-      <div class="ttl">LLM 교전 의사결정 코파일럿 (ROE/COA)</div>
-      <div class="en">LLM Engagement Copilot</div>
-      <p class="desc">자연어로 위협 상황을 질의하고, 교전수칙(ROE)을 근거로 다중 방책(COA)을 비교·추천. EGCED의 AI-COMMAND(LLM 군사 의사결정)와 Claude 빌더 생태계에 직결.</p>
-      <div class="chips"><span class="chip">LLM 함수호출</span><span class="chip">RAG(ROE/SOP)</span><span class="chip">COA 비교</span></div>
-      <div class="link"><span class="link__t">주최측 연계</span><span class="link__c">EGCED Tech (최강근) · Claude Bloom</span></div>
-      <div class="meta"><div class="layers"><span class="L ai">AI</span><span class="L fe">FE</span></div><div class="diff"><b>난이도</b> ★★</div></div>
-    </article>
-
-    <article class="card">
-      <div class="num">03</div>
-      <div class="ttl">온톨로지 융합 → 의사결정 파이프라인</div>
-      <div class="en">Ontology Fusion to Decision</div>
-      <p class="desc">레이더·RF·EO/IR·음향 표적을 온톨로지 객체로 통합해 "데이터 → 의사결정 → 실행" 워크플로우로 연결. Morph Systems의 Palantir형 온톨로지 접근과 같은 패러다임.</p>
-      <div class="chips"><span class="chip">온톨로지</span><span class="chip">센서 융합</span><span class="chip">의사결정 워크플로우</span></div>
-      <div class="link"><span class="link__t">주최측 연계</span><span class="link__c">Morph Systems (박민규)</span></div>
-      <div class="meta"><div class="layers"><span class="L be">BE</span><span class="L da">DA</span></div><div class="diff"><b>난이도</b> ★★★</div></div>
-    </article>
-
-    <article class="card">
-      <div class="num">04</div>
-      <div class="ttl">안티드론 킬체인 자동화</div>
-      <div class="en">Counter-UAS Kill Chain</div>
-      <p class="desc">탐지 → 식별 → 소프트킬(재머)까지 대드론 킬체인을 자동화하고 사람은 교전 승인(HITL)만 담당. BONE AI가 추진하는 "드론판 킬체인"과 정면으로 맞물린다.</p>
-      <div class="chips"><span class="chip">이벤트 파이프라인</span><span class="chip">소프트킬 연동</span><span class="chip">HITL 게이트</span></div>
-      <div class="link"><span class="link__t">주최측 연계</span><span class="link__c">BONE AI (이도경)</span></div>
-      <div class="meta"><div class="layers"><span class="L be">BE</span><span class="L dm">DM</span></div><div class="diff"><b>난이도</b> ★★★</div></div>
-    </article>
-
-    <article class="card">
-      <div class="num">05</div>
-      <div class="ttl">멀티모달 LM 드론 식별·상황 캡셔닝</div>
-      <div class="en">Multimodal LM Recognition</div>
-      <p class="desc">EO/IR 영상과 RF 신호를 멀티모달 LM으로 융합해 드론/조류를 구분하고 "무엇이·어디서·위협도"를 자연어로 캡션. 백기오(멀티모달 LM·HyperCLOVA X Vision)의 전문 영역.</p>
-      <div class="chips"><span class="chip">멀티모달 LM</span><span class="chip">비전+RF</span><span class="chip">자연어 캡션</span></div>
-      <div class="link"><span class="link__t">주최측 연계</span><span class="link__c">Theta One (백기오) · BONE AI</span></div>
-      <div class="meta"><div class="layers"><span class="L ai">AI</span></div><div class="diff"><b>난이도</b> ★★★</div></div>
-    </article>
-
-    <article class="card">
-      <div class="num">06</div>
-      <div class="ttl">대드론 운용자 AI 훈련 시뮬레이터</div>
-      <div class="en">C-UAS Operator Trainer</div>
-      <p class="desc">가상 드론 위협 시나리오로 안티드론 운용자를 훈련하고, LLM이 수행을 평가·피드백. EGCED가 실제 안티드론 운용자 교육에 납품한 사업과 직결.</p>
-      <div class="chips"><span class="chip">시나리오 생성</span><span class="chip">LLM 평가</span><span class="chip">워게임</span></div>
-      <div class="link"><span class="link__t">주최측 연계</span><span class="link__c">EGCED Tech (최강근)</span></div>
-      <div class="meta"><div class="layers"><span class="L fe">FE</span><span class="L ai">AI</span></div><div class="diff"><b>난이도</b> ★★</div></div>
-    </article>
-
-    <article class="card">
-      <div class="num">07</div>
-      <div class="ttl">스웜 대응 자원배분 (강화학습)</div>
-      <div class="en">Swarm Response RL</div>
-      <p class="desc">동시 출현 드론을 클러스터링하고 한정된 재머/요격 자원을 강화학습으로 최적 배분. 박민규(강화학습 논문)·Morph(자원배분 의사결정)의 관심사, BONE AI 대응에 연결.</p>
-      <div class="chips"><span class="chip">강화학습</span><span class="chip">클러스터링</span><span class="chip">자원 최적화</span></div>
-      <div class="link"><span class="link__t">주최측 연계</span><span class="link__c">Morph Systems (박민규) · BONE AI</span></div>
-      <div class="meta"><div class="layers"><span class="L ai">AI</span><span class="L be">BE</span></div><div class="diff"><b>난이도</b> ★★★</div></div>
-    </article>
-
-    <article class="card">
-      <div class="num">08</div>
-      <div class="ttl">온디바이스·엣지 실시간 탐지 (통신차단·저SWaP)</div>
-      <div class="en">Edge Inference · DDIL</div>
-      <p class="desc">통신차단·저전력(저SWaP) 환경에서 드론 탐지·식별을 클라우드 없이 엣지에서 실행. Prairie의 온디바이스 철학과 F4GE의 저비용 하드웨어가 맞닿는 지점.</p>
-      <div class="chips"><span class="chip">엣지 추론</span><span class="chip">모델 경량화</span><span class="chip">저전력</span></div>
-      <div class="link"><span class="link__t">주최측 연계</span><span class="link__c">Prairie Schooner · F4GE (권혁현)</span></div>
-      <div class="meta"><div class="layers"><span class="L ai">AI</span><span class="L be">BE</span></div><div class="diff"><b>난이도</b> ★★★</div></div>
-    </article>
-
-    <article class="card">
-      <div class="num">09</div>
-      <div class="ttl">저비용 양산형 대드론 센서 노드</div>
-      <div class="en">Mass-Producible Sensor Node</div>
-      <p class="desc">양산 가능한 저가 SDR·음향 노드를 메시로 배치해 도심 사각지대를 커버하고, 제조성(DFM)을 처음부터 설계에 반영. F4GE의 "소프트웨어 속도의 국방 양산"·BONE AI 임베디드와 직결.</p>
-      <div class="chips"><span class="chip">저비용 SDR</span><span class="chip">DFM 제조성</span><span class="chip">노드 메시</span></div>
-      <div class="link"><span class="link__t">주최측 연계</span><span class="link__c">F4GE (권혁현) · BONE AI</span></div>
-      <div class="meta"><div class="layers"><span class="L dm">DM</span><span class="L be">BE</span></div><div class="diff"><b>난이도</b> ★★★</div></div>
-    </article>
-
-    <article class="card">
-      <div class="num">10</div>
-      <div class="ttl">임무계획·지속지원 자동화 (LLM 니보드형)</div>
+      <div class="chead"><span class="rk">#2</span><span class="ttl">임무계획·지속지원 자동화 (LLM 니보드형)</span><span class="feas f5">가능성 매우 높음</span></div>
       <div class="en">Mission &amp; Sustainment Autogen</div>
-      <p class="desc">대드론 작전의 임무 브리핑과 자산·소모품(재머 배터리·탄약) 지속지원 현황을 LLM으로 자동 생성. Morph의 해병대 "LLM 니보드"·공급망 가시성과 같은 결.</p>
-      <div class="chips"><span class="chip">LLM 임무브리핑</span><span class="chip">공급망 가시성</span><span class="chip">자동 리포트</span></div>
-      <div class="link"><span class="link__t">주최측 연계</span><span class="link__c">Morph Systems (박민규) · EGCED Tech</span></div>
-      <div class="meta"><div class="layers"><span class="L da">DA</span><span class="L fe">FE</span></div><div class="diff"><b>난이도</b> ★★</div></div>
+      <div class="link"><span class="link__t">주최측 연계</span><span class="link__c">Morph Systems · EGCED Tech</span></div>
+      <p class="vision">대드론 작전의 임무 브리핑과 자산·소모품(재머 배터리·전원·예비 안테나) 지속지원을 통합한 운영 OS. 부대 단위 재고·정비·보급을 LLM이 자동 집계하고 수요를 예측해 발주까지.</p>
+      <p class="fit"><b>팀 적합:</b> <span class="mtag" style="color:var(--khj)">KHJ</span> LLM·<span class="mtag" style="color:var(--kyj)">KYJ</span> 수요예측(보잉 경험 직결)·<span class="mtag" style="color:var(--jch)">JCH</span> UI·<span class="mtag" style="color:var(--lmh)">LMH</span> 백엔드 — 전원 소프트웨어.</p>
+      <div class="res">
+        <div class="r"><span class="rl">기술스택</span><span class="rv">LLM 구조화 출력 · ETL 파이프라인 · 시계열 수요예측 · <code>PostgreSQL</code> · 리포트(PDF) 생성</span></div>
+        <div class="r"><span class="rl hw">하드웨어</span><span class="rv">없음</span></div>
+        <div class="r"><span class="rl inf">인프라·자원</span><span class="rv">DB · Docker 백엔드 · LLM API · (선택) 예측 모델 서빙 · 정비·보급 샘플 데이터</span></div>
+      </div>
+    </article>
+
+    <!-- 3 -->
+    <article class="card">
+      <div class="chead"><span class="rk">#3</span><span class="ttl">대드론 운용자 AI 훈련 시뮬레이터</span><span class="feas f4">가능성 높음</span></div>
+      <div class="en">C-UAS Operator Trainer</div>
+      <div class="link"><span class="link__t">주최측 연계</span><span class="link__c">EGCED Tech (안티드론 운용자 교육 납품)</span></div>
+      <p class="vision">스웜·기만·저고도 등 다양한 드론 위협 시나리오를 절차적으로 생성하고, 운용자의 탐지·식별·교전 결정을 기록해 LLM이 교리(MDMP) 기준으로 평가·코칭. 리더보드·운용자 인증까지.</p>
+      <p class="fit"><b>팀 적합:</b> <span class="mtag" style="color:var(--jch)">JCH</span> 시뮬 UI·<span class="mtag" style="color:var(--khj)">KHJ</span> LLM 평가·<span class="mtag" style="color:var(--kjh)">KJH</span> 시나리오 현실성·<span class="mtag" style="color:var(--kyj)">KYJ</span> 채점 — 웹 기반 소프트웨어.</p>
+      <div class="res">
+        <div class="r"><span class="rl">기술스택</span><span class="rv">WebGL/Three.js 또는 Unity · 시나리오 절차생성 · LLM 평가 · React · 상태기록 DB</span></div>
+        <div class="r"><span class="rl hw">하드웨어</span><span class="rv">없음(웹) · (선택) VR 헤드셋</span></div>
+        <div class="r"><span class="rl inf">인프라·자원</span><span class="rv">웹 호스팅 · LLM API · DB · 실시간 상태 동기 · 위협 시나리오 자료</span></div>
+      </div>
+    </article>
+
+    <!-- 4 -->
+    <article class="card">
+      <div class="chead"><span class="rk">#4</span><span class="ttl">안티드론 킬체인 자동화 <span style="color:var(--green); font-size:.7em; font-family:var(--mono)">★팀 차별화</span></span><span class="feas f4">가능성 높음</span></div>
+      <div class="en">Closed-Loop Counter-UAS Kill Chain</div>
+      <div class="link"><span class="link__t">주최측 연계</span><span class="link__c">BONE AI ("드론판 킬체인")</span></div>
+      <p class="vision">탐지(레이더/RF) → 식별 → 소프트킬(재머 주파수·지향 자동조준)까지 닫힌 루프로 자동화하고 사람은 교전 승인(HITL)만. <b>실제 재머 펌웨어와 연동한 PoC 하드웨어</b>로 시연 — 다른 팀이 못 내는 결과물.</p>
+      <p class="fit"><b>팀 적합:</b> <span class="mtag" style="color:var(--kjh)">KJH</span> 재머 펌웨어=핵심 무기·<span class="mtag" style="color:var(--lmh)">LMH</span> 임베디드 게이트웨이·<span class="mtag" style="color:var(--khj)">KHJ</span> 오케스트레이션 — 팀만의 하드웨어 차별화.</p>
+      <div class="res">
+        <div class="r"><span class="rl">기술스택</span><span class="rv">이벤트 스트리밍(<code>MQTT</code>/Kafka) · 디바이스 제어 API · 재머 펌웨어(C/RTOS) · 규칙엔진 · 대시보드</span></div>
+        <div class="r"><span class="rl hw">하드웨어</span><span class="rv">SDR(HackRF/USRP) · 지향성 안테나 · 재머 모듈 · Jetson/RPi 게이트웨이 · 타깃 드론</span></div>
+        <div class="r"><span class="rl inf">인프라·자원</span><span class="rv">엣지 게이트웨이 · 메시지 브로커 · 시연 공간</span></div>
+      </div>
+      <p class="warn">⚠ 전파법: 실제 재머 송출은 차폐룸/허가 필요 → 시연은 모의신호·계측기 기반 권장.</p>
+    </article>
+
+    <!-- 5 -->
+    <article class="card">
+      <div class="chead"><span class="rk">#5</span><span class="ttl">온톨로지 융합 → 의사결정 파이프라인</span><span class="feas f4">가능성 높음</span></div>
+      <div class="en">Ontology Fusion to Decision</div>
+      <div class="link"><span class="link__t">주최측 연계</span><span class="link__c">Morph Systems (Palantir형 온톨로지)</span></div>
+      <p class="vision">이기종 센서(레이더·RF·EO/IR·음향·AIS)를 공통 온톨로지로 정규화해 단일 표적 객체로 융합하고, 그 위에 의사결정·실행 액션을 얹는 운영체계. 표적 이력·연관 추론까지.</p>
+      <p class="fit"><b>팀 적합:</b> <span class="mtag" style="color:var(--lmh)">LMH</span> 백엔드·DB·<span class="mtag" style="color:var(--kyj)">KYJ</span> 데이터·<span class="mtag" style="color:var(--jch)">JCH</span> 융합맵 UI — 소프트웨어, 개념 난도 높음.</p>
+      <div class="res">
+        <div class="r"><span class="rl">기술스택</span><span class="rv">그래프DB(<code>Neo4j</code>) · 스트림 처리(Kafka/Flink) · 데이터 정규화 · React + deck.gl(GIS)</span></div>
+        <div class="r"><span class="rl hw">하드웨어</span><span class="rv">없음 — 센서는 모의 피드</span></div>
+        <div class="r"><span class="rl inf">인프라·자원</span><span class="rv">그래프DB · 스트림 처리 · 백엔드 · 지도 타일 · 다종 센서 모의 데이터셋</span></div>
+      </div>
+    </article>
+
+    <!-- 6 -->
+    <article class="card">
+      <div class="chead"><span class="rk">#6</span><span class="ttl">온디바이스·엣지 탐지 (통신차단·저SWaP)</span><span class="feas f3">가능성 중상</span></div>
+      <div class="en">Edge Inference · DDIL</div>
+      <div class="link"><span class="link__t">주최측 연계</span><span class="link__c">Prairie Schooner · F4GE</span></div>
+      <p class="vision">클라우드 없이 엣지에서 드론 음향·RF·영상 탐지를 실시간 수행하고, 통신차단(DDIL)에서도 자율 동작. 저전력·소형(저SWaP)으로 차량·초소 단위 배치.</p>
+      <p class="fit"><b>팀 적합:</b> <span class="mtag" style="color:var(--lmh)">LMH</span> 임베디드/EV·<span class="mtag" style="color:var(--kjh)">KJH</span> RF·<span class="mtag" style="color:var(--khj)">KHJ</span> 모델 — 엣지 ML 최적화는 추가 학습 필요.</p>
+      <div class="res">
+        <div class="r"><span class="rl">기술스택</span><span class="rv">엣지 ML(<code>TensorRT</code>/ONNX/TFLite) · 모델 양자화·프루닝 · 음향/RF 특징 · C++/Python</span></div>
+        <div class="r"><span class="rl hw">하드웨어</span><span class="rv">Jetson Orin/Nano · 마이크 어레이 · SDR · 저전력 보드 · 배터리</span></div>
+        <div class="r"><span class="rl inf">인프라·자원</span><span class="rv">엣지 디바이스 · (학습용) GPU · 모델 변환 파이프라인 · 드론 음향/RF 데이터셋</span></div>
+      </div>
+    </article>
+
+    <!-- 7 -->
+    <article class="card">
+      <div class="chead"><span class="rk">#7</span><span class="ttl">저비용 양산형 대드론 센서 노드 (DFM)</span><span class="feas f3">가능성 중상</span></div>
+      <div class="en">Mass-Producible Sensor Node</div>
+      <div class="link"><span class="link__t">주최측 연계</span><span class="link__c">F4GE (국방 양산) · BONE AI</span></div>
+      <p class="vision">도심 사각지대를 덮는 저가 음향·RF 탐지 노드를 양산성(DFM) 기준으로 설계하고, 수십~수백 노드 메시로 광역 커버리지. 노드 간 시간동기로 위치 산출(TDOA).</p>
+      <p class="fit"><b>팀 적합:</b> <span class="mtag" style="color:var(--kjh)">KJH</span> RF·펌웨어·<span class="mtag" style="color:var(--lmh)">LMH</span> 임베디드·양산 노출 — 하드웨어 제작에 시간 소요.</p>
+      <div class="res">
+        <div class="r"><span class="rl">기술스택</span><span class="rv">임베디드 펌웨어 · 메시 네트워킹(LoRa/Wi-Fi) · TDOA 시간동기 · 커버리지 시뮬 · KiCad(PCB)</span></div>
+        <div class="r"><span class="rl hw">하드웨어</span><span class="rv">저가 MCU(ESP32) · MEMS 마이크 · RF 프론트엔드 · PCB 시제품 · 다수 노드</span></div>
+        <div class="r"><span class="rl inf">인프라·자원</span><span class="rv">노드 게이트웨이 · 수집 서버 · 시간동기(GPS/PTP) · PCB 발주·납기</span></div>
+      </div>
+    </article>
+
+    <!-- 8 -->
+    <article class="card">
+      <div class="chead"><span class="rk">#8</span><span class="ttl">자연어 음성 1인–다(多)무인기 오케스트레이션</span><span class="feas f2">가능성 중</span></div>
+      <div class="en">Voice C2 · One-to-Many UAS</div>
+      <div class="link"><span class="link__t">주최측 연계</span><span class="link__c">Prairie Schooner (PEGASUS · DIU 챌린지)</span></div>
+      <p class="vision">운용자가 자연어 음성으로 다수 무인기(정찰·대드론)에게 임무를 동시 배분·조정하고, 통신차단에서도 온디바이스로 동작하는 오케스트레이터. (Prairie PEGASUS급 비전)</p>
+      <p class="fit"><b>팀 적합:</b> <span class="mtag" style="color:var(--khj)">KHJ</span> NL 변환·<span class="mtag" style="color:var(--lmh)">LMH</span> 통신·<span class="mtag" style="color:var(--kjh)">KJH</span> 무인기 운용 — 실드론 통합·통신차단 난도 높아 <b>시뮬로 범위 조절</b> 권장.</p>
+      <div class="res">
+        <div class="r"><span class="rl">기술스택</span><span class="rv">온디바이스 ASR(Whisper/Vosk) · NL→임무 변환(LLM) · 드론 SDK(<code>MAVSDK</code>/DJI) · 멀티에이전트 조정</span></div>
+        <div class="r"><span class="rl hw">하드웨어</span><span class="rv">다수 드론(또는 시뮬) · 전술 단말 · 엣지 컴퓨트 · RF 통신 모듈</span></div>
+        <div class="r"><span class="rl inf">인프라·자원</span><span class="rv">드론 시뮬(Gazebo/AirSim) · 통신 미들웨어 · 엣지 추론 · 비행 허가 공역(실기체 시)</span></div>
+      </div>
+    </article>
+
+    <!-- 9 -->
+    <article class="card">
+      <div class="chead"><span class="rk">#9</span><span class="ttl">멀티모달 LM 드론 식별·상황 캡셔닝</span><span class="feas f2">가능성 중</span></div>
+      <div class="en">Multimodal LM Recognition</div>
+      <div class="link"><span class="link__t">주최측 연계</span><span class="link__c">Theta One (백기오) · BONE AI</span></div>
+      <p class="vision">EO/IR 영상·RF·음향을 멀티모달 모델로 융합해 드론/조류/기종을 식별하고 "무엇이·어디서·의도·위협도"를 자연어로 브리핑. 백기오의 멀티모달 LM 전문영역.</p>
+      <p class="fit"><b>팀 적합:</b> <span class="mtag" style="color:var(--khj)">KHJ</span> LLM이지만 <b>멀티모달 학습·데이터 확보 부담</b>(전용 CV/멀티모달 연구자 부재) → 사전학습 VLM 활용 권장.</p>
+      <div class="res">
+        <div class="r"><span class="rl">기술스택</span><span class="rv">사전학습 VLM 파인튜닝 · 멀티모달 융합 · 데이터 라벨링 · <code>PyTorch</code></span></div>
+        <div class="r"><span class="rl hw">하드웨어</span><span class="rv">(학습) GPU · EO/IR 카메라 · SDR · 라벨링 데이터셋</span></div>
+        <div class="r"><span class="rl inf">인프라·자원</span><span class="rv">GPU 학습 환경 · 데이터 파이프라인 · 추론 서빙 · 드론 영상/신호 데이터</span></div>
+      </div>
+    </article>
+
+    <!-- 10 -->
+    <article class="card">
+      <div class="chead"><span class="rk">#10</span><span class="ttl">스웜 대응 자원배분 (강화학습)</span><span class="feas f1">가능성 도전적</span></div>
+      <div class="en">Swarm Response · Reinforcement Learning</div>
+      <div class="link"><span class="link__t">주최측 연계</span><span class="link__c">박민규(강화학습) · Morph · BONE AI</span></div>
+      <p class="vision">수십 기 스웜을 클러스터링하고, 한정된 재머·요격 자원을 강화학습 정책으로 실시간 최적 배분하는 교전 관리 시스템(BMS). 대규모 시뮬 기반 정책 학습.</p>
+      <p class="fit"><b>팀 적합:</b> <b>RL 전문성 부재로 연구 리스크 최상</b> → 규칙기반·휴리스틱 최적화(OR) 대안 병행 권장. 가능성 최하.</p>
+      <div class="res">
+        <div class="r"><span class="rl">기술스택</span><span class="rv">강화학습(RLlib/SB3) · 멀티에이전트 시뮬 · 최적화(OR-Tools) · 시각화</span></div>
+        <div class="r"><span class="rl hw">하드웨어</span><span class="rv">(학습) GPU</span></div>
+        <div class="r"><span class="rl inf">인프라·자원</span><span class="rv">멀티에이전트 시뮬 환경 · GPU 학습 클러스터 · 정책 서빙</span></div>
+      </div>
     </article>
 
   </div>
 
   <footer>
-    <span>D4D · TEAM AEGIS — Track 1 워밍업 리스트 (주최측 연계판)</span>
+    <span>D4D · TEAM AEGIS — Track 1 (팀 가능성순 · 자원 포함)</span>
     <span><a href="../">팀소개</a> · <a href="../d4d/">행사 분석</a></span>
   </footer>
 
