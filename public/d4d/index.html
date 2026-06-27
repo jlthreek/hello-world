@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>D4D | Deploy for Defense Hackathon APAC – SEOUL 심층 분석</title>
+<style>
+  :root {
+    --bg: #0b0f14;
+    --panel: #11171f;
+    --panel-2: #161d27;
+    --ink: #e6edf3;
+    --muted: #93a1b0;
+    --line: #233040;
+    --accent: #3fb950;       /* defense green */
+    --accent-2: #58a6ff;     /* tech blue */
+    --warn: #f0883e;
+    --danger: #f85149;
+    --chip: #1b2530;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background:
+      radial-gradient(900px 500px at 85% -10%, rgba(63,185,80,.10), transparent 60%),
+      radial-gradient(800px 500px at 0% 0%, rgba(88,166,255,.10), transparent 55%),
+      var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Apple SD Gothic Neo",
+      "Noto Sans KR", "NanumGothic", "Malgun Gothic", Roboto, sans-serif;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 0 22px 90px; }
+
+  /* Hero */
+  header.hero {
+    position: relative;
+    padding: 64px 0 40px;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 40px;
+  }
+  .eyebrow {
+    font-size: 12.5px; letter-spacing: .22em; text-transform: uppercase;
+    color: var(--accent); font-weight: 700; margin-bottom: 16px;
+  }
+  h1.title {
+    font-size: clamp(28px, 5vw, 46px); line-height: 1.15; margin: 0 0 14px;
+    font-weight: 800; letter-spacing: -.01em;
+  }
+  h1.title .d4d {
+    background: linear-gradient(120deg, var(--accent), var(--accent-2));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .subtitle { color: var(--muted); font-size: 16px; max-width: 720px; }
+  .meta-row { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 8px; }
+  .pill {
+    background: var(--chip); border: 1px solid var(--line); color: var(--ink);
+    font-size: 13px; padding: 6px 12px; border-radius: 999px;
+  }
+  .pill b { color: var(--accent); }
+
+  /* TOC */
+  nav.toc {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 14px;
+    padding: 18px 22px; margin-bottom: 40px;
+  }
+  nav.toc h4 { margin: 0 0 12px; font-size: 12px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--muted); }
+  nav.toc ol { margin: 0; padding-left: 0; list-style: none;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 6px 22px; }
+  nav.toc a { color: var(--ink); text-decoration: none; font-size: 14.5px;
+    display: flex; gap: 10px; padding: 4px 0; }
+  nav.toc a:hover { color: var(--accent-2); }
+  nav.toc a .num { color: var(--accent); font-variant-numeric: tabular-nums; font-weight: 700; }
+
+  section { margin-bottom: 46px; scroll-margin-top: 20px; }
+  h2 {
+    font-size: 23px; font-weight: 800; margin: 0 0 18px; padding-bottom: 10px;
+    border-bottom: 1px solid var(--line); display: flex; align-items: center; gap: 12px;
+  }
+  h2 .ix {
+    font-size: 13px; color: var(--bg); background: var(--accent); font-weight: 800;
+    width: 28px; height: 28px; border-radius: 8px; display: grid; place-items: center;
+    flex: none;
+  }
+  h3 { font-size: 17px; margin: 26px 0 10px; color: var(--accent-2); font-weight: 700; }
+  p { margin: 0 0 14px; }
+  a { color: var(--accent-2); }
+
+  /* Callout */
+  .callout {
+    border-left: 3px solid var(--accent); background: var(--panel);
+    padding: 16px 20px; border-radius: 0 12px 12px 0; margin: 0 0 20px;
+    font-size: 15.5px;
+  }
+  .callout.blue { border-left-color: var(--accent-2); }
+  .callout strong { color: var(--ink); }
+
+  /* Tables */
+  .tbl-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; margin: 6px 0 18px; }
+  table { width: 100%; border-collapse: collapse; font-size: 14.5px; min-width: 520px; }
+  th, td { text-align: left; padding: 11px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  thead th { background: var(--panel-2); color: var(--muted); font-weight: 600;
+    font-size: 12.5px; letter-spacing: .04em; text-transform: uppercase; }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:hover { background: rgba(88,166,255,.04); }
+  td b { color: var(--ink); }
+
+  /* confidence badges */
+  .c { font-size: 11.5px; font-weight: 700; padding: 2px 9px; border-radius: 999px; white-space: nowrap; display: inline-block; }
+  .c.high { background: rgba(63,185,80,.15); color: var(--accent); border: 1px solid rgba(63,185,80,.35); }
+  .c.mid  { background: rgba(240,136,62,.15); color: var(--warn); border: 1px solid rgba(240,136,62,.35); }
+  .c.low  { background: rgba(248,81,73,.13); color: var(--danger); border: 1px solid rgba(248,81,73,.32); }
+
+  /* cards */
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px,1fr)); gap: 14px; margin: 6px 0 8px; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; }
+  .card h4 { margin: 0 0 6px; font-size: 15px; }
+  .card .fire { color: var(--warn); }
+  .card p { font-size: 13.5px; color: var(--muted); margin: 0; }
+
+  ul.clean { margin: 0 0 16px; padding-left: 0; list-style: none; }
+  ul.clean li { padding: 6px 0 6px 26px; position: relative; }
+  ul.clean li::before { content: "▸"; position: absolute; left: 4px; color: var(--accent); }
+  ul.x li::before { content: "✕"; color: var(--danger); }
+  ul.gap { counter-reset: g; }
+  ul.gap li::before { content: counter(g); counter-increment: g;
+    background: var(--chip); color: var(--accent-2); width: 19px; height: 19px;
+    border-radius: 6px; font-size: 11px; font-weight: 700; display: grid; place-items: center;
+    top: 8px; left: 0; }
+  ul.gap li { padding-left: 30px; }
+
+  /* avatars */
+  .who { display: flex; align-items: center; gap: 10px; }
+  .who img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover;
+    border: 1px solid var(--line); flex: none; background: var(--panel-2); }
+  .gallery { display: flex; flex-wrap: wrap; gap: 18px; margin: 6px 0 20px; }
+  .face { width: 130px; text-align: center; }
+  .face img { width: 130px; height: 130px; border-radius: 14px; object-fit: cover;
+    border: 1px solid var(--line); display: block; }
+  .face .nm { margin-top: 8px; font-size: 14px; font-weight: 700; }
+  .face .ro { font-size: 12px; color: var(--muted); }
+  .face .sr { font-size: 11px; color: var(--accent); margin-top: 2px; }
+
+  /* company blocks */
+  .co { background: var(--panel); border: 1px solid var(--line); border-radius: 14px;
+    padding: 20px 22px; margin-bottom: 16px; }
+  .co-head { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 4px; }
+  .co-head .cn { font-size: 19px; font-weight: 800; }
+  .co-head .ce { color: var(--muted); font-size: 13px; }
+  .trk { font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 999px;
+    background: rgba(88,166,255,.14); color: var(--accent-2); border: 1px solid rgba(88,166,255,.34);
+    margin-left: auto; }
+  .co .lead { color: var(--ink); font-size: 14.5px; margin: 4px 0 13px; }
+  .co dl { margin: 0; display: grid; grid-template-columns: max-content 1fr; gap: 7px 16px; font-size: 14px; }
+  .co dt { color: var(--accent); font-weight: 700; white-space: nowrap; }
+  .co dd { margin: 0; color: var(--ink); }
+  .co .use { margin-top: 14px; padding: 11px 15px; background: var(--panel-2); border-radius: 10px;
+    font-size: 13.5px; border-left: 3px solid var(--accent); }
+  .co .use b { color: var(--accent); }
+  @media (max-width: 560px){ .co dl { grid-template-columns: 1fr; gap: 2px 0; } .co dt { margin-top: 8px; } }
+
+  /* print / PDF pagination */
+  @media print {
+    section, .co, .card, .face, .tbl-wrap, tr { break-inside: avoid; }
+    h2 { break-after: avoid; }
+    h3 { break-after: avoid; }
+    a { text-decoration: none; }
+  }
+
+  .sources { columns: 2; column-gap: 28px; }
+  .sources a { display: block; padding: 5px 0; font-size: 14px; break-inside: avoid; }
+  @media (max-width: 640px){ .sources { columns: 1; } }
+
+  footer { margin-top: 60px; padding-top: 22px; border-top: 1px solid var(--line);
+    color: var(--muted); font-size: 13px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+  .tag { color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a href="../" style="display:inline-flex;align-items:center;gap:7px;margin:20px 0 -10px;
+     padding:7px 14px;border:1px solid var(--line);border-radius:999px;background:var(--panel);
+     color:var(--accent);text-decoration:none;font-size:13px;font-weight:700;">
+    ← TEAM AEGIS · 팀소개로
+  </a>
+
+  <header class="hero">
+    <div class="eyebrow">D4D 해커톤 정리 · 2026-06-27</div>
+    <h1 class="title"><span class="d4d">D4D</span> | Deploy for Defense<br>Hackathon APAC – SEOUL 심층 분석</h1>
+    <p class="subtitle">2026년 7월 3~5일 서울에서 열리는 국방테크 해커톤. 주최진과 그 소속 회사, 파트너, 심사 기준을 정리했다.</p>
+    <div class="meta-row">
+      <span class="pill">📅 <b>2026.7.3–5</b></span>
+      <span class="pill">📍 서울</span>
+      <span class="pill">🏆 총상금 <b>1,500만원</b></span>
+      <span class="pill">👥 200명 / 팀당 4인</span>
+      <span class="pill">🛡️ 5개 트랙</span>
+    </div>
+  </header>
+
+  <nav class="toc">
+    <h4>목차</h4>
+    <ol>
+      <li><a href="#s1"><span class="num">01</span> 행사 개요</a></li>
+      <li><a href="#s2"><span class="num">02</span> 행사 배경</a></li>
+      <li><a href="#s3"><span class="num">03</span> 누가 주최하는가</a></li>
+      <li><a href="#sco"><span class="num">04</span> 주최측 소속 회사</a></li>
+      <li><a href="#s4"><span class="num">05</span> 누가 후원·파트너인가</a></li>
+      <li><a href="#s5"><span class="num">06</span> 심사 기준</a></li>
+      <li><a href="#s6"><span class="num">07</span> 상금 구조</a></li>
+      <li><a href="#src"><span class="num">08</span> 주요 출처</a></li>
+    </ol>
+  </nav>
+
+  <!-- 1 -->
+  <section id="s1">
+    <h2><span class="ix">1</span>행사 개요</h2>
+    <div class="tbl-wrap"><table>
+      <tbody>
+        <tr><td><b>정식명</b></td><td>D4D | Deploy for Defense Hackathon APAC – SEOUL – 24H</td></tr>
+        <tr><td><b>일정</b></td><td>2026년 7월 3일(금)~5일(일) · 24시간 진행</td></tr>
+        <tr><td><b>장소</b></td><td>서울 (정확 주소는 등록 승인 후 공개)</td></tr>
+        <tr><td><b>규모</b></td><td>200~201명 / 팀당 최대 4인 / 개인참가·현장 팀빌딩 가능</td></tr>
+        <tr><td><b>총상금</b></td><td><b>1,500만원</b> (당초 1,000만원 → 6/13 증액)</td></tr>
+        <tr><td><b>주최사</b></td><td>EGCED Tech (익시드테크)</td></tr>
+        <tr><td><b>신청</b></td><td>Luma 등록 + 호스트 승인 필수</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>3일 구성</h3>
+    <ul class="clean">
+      <li><b>Day 0 (7/3 금)</b> — Defense Builders Night Vol.2 (프리이벤트, 파트너사 세션)</li>
+      <li><b>Day 1 (7/4 토)</b> — 킥오프·개발 (멘토 세션 15~17시, 빌더 커뮤니티 18~21시)</li>
+      <li><b>Day 2 (7/5 일)</b> — 10시 제출마감 → 1차심사(10~12:30) → 최종피칭(14시) → 시상(15시)</li>
+    </ul>
+
+    <h3>5개 트랙</h3>
+    <div class="grid">
+      <div class="card"><h4>T1 · 자율·무인</h4><p>자율·무인 시스템 및 대드론 (Counter-UAS)</p></div>
+      <div class="card"><h4>T2 · OSINT</h4><p>OSINT &amp; 국방 인텔리전스</p></div>
+      <div class="card"><h4>T3 · C2</h4><p>전장네트워크·지휘통제·지속지원</p></div>
+      <div class="card"><h4>T4 · MDA</h4><p>해상영역인식</p></div>
+      <div class="card"><h4>T5 · 시뮬레이션</h4><p>전투준비·교육·시뮬레이션</p></div>
+    </div>
+  </section>
+
+  <!-- 2 -->
+  <section id="s2">
+    <h2><span class="ix">2</span>행사 배경</h2>
+    <p>D4D는 미국 National Security Hackathon과 유럽 EDTH를 모델로 한 국방테크 해커톤이다. 익시드테크 등이 결성한 '디펜스 스타트업 얼라이언스(DSA)'가 운영하며, ICML 2026 서울 직전 주말에 열린다.</p>
+
+    <h3>ICML 2026 서울의 비공식 위성 이벤트</h3>
+    <ul class="clean">
+      <li>ICML 2026(머신러닝 최대 학회)이 <b>2026년 7월 6~11일 서울 COEX 개최로 공식 확정</b></li>
+      <li>D4D(7/3~5)는 그 직전 주말 "Road to ICML 2026 Seoul" 비공식 커뮤니티 이벤트 묶음의 하나</li>
+      <li>캘린더 총괄: 정구봉·한성민·Erica Kang(KryptoSeoul 창업자) / 같은 우산: FriendliAI·VESSL AI·Instruct.KR·Sionic AI</li>
+    </ul>
+
+    <h3>운영 주체 — 민간 K-디펜스 스타트업 네트워크</h3>
+    <ul class="clean">
+      <li><b>DSA(디펜스 스타트업 얼라이언스)</b>: 2026.1월 익시드테크·프레리스쿠너·모프시스템즈가 결성 → DBN·Defense Pizza Night·D4D의 모체</li>
+      <li><b>코스포 방위산업협의회</b>(2026.5.14 출범, 18개사): 익시드테크·모프·프레리스쿠너·본에이아이 포함 (공동회장: 마키나락스 윤성호 + 본에이아이 이도경)</li>
+      <li><b>국가보훈부 서울제대군인지원센터</b>와 공식 협력</li>
+    </ul>
+
+    <h3>정부 정책 배경</h3>
+    <ul class="clean">
+      <li>2026.2.23 중기부+방사청 <b>'방산 스타트업 육성방안'</b>(2030년까지 방산 스타트업 100개사) 발표 직후 생태계 결집</li>
+      <li>민간 주도 <b>Defense Builders Night</b>(서울 강남, 약 200명·국방 스타트업·군·투자자)이 신호탄</li>
+    </ul>
+  </section>
+
+  <!-- 3 -->
+  <section id="s3">
+    <h2><span class="ix">3</span>누가 주최하는가 — 주최진</h2>
+    <p>Luma에 등록된 호스트 6명 중 앞의 4명(최강근·김기연·박민규·권혁현)은 파트너 스타트업의 대표를 겸한다. 이들의 소속 회사는 다음 섹션에서 다룬다.</p>
+
+    <div class="gallery">
+      <figure class="face">
+        <img src="assets/choi-kanggeun.jpg" alt="최강근 David Choi" loading="lazy">
+        <div class="nm">최강근 · David Choi</div>
+        <div class="ro">EGCED Tech 대표</div>
+        <div class="sr">출처: 익시드테크 MOU 보도</div>
+      </figure>
+      <figure class="face">
+        <img src="assets/sean-kwon.jpg" alt="권혁현 Sean Kwon" loading="lazy">
+        <div class="nm">권혁현 · Sean Kwon</div>
+        <div class="ro">F4GE 대표</div>
+        <div class="sr">출처: Stimson Center</div>
+      </figure>
+      <figure class="face">
+        <img src="assets/paik-gio.jpg" alt="백기오 Paik Gio" loading="lazy">
+        <div class="nm">백기오 · Paik Gio</div>
+        <div class="ro">Theta One ML</div>
+        <div class="sr">출처: GitHub</div>
+      </figure>
+    </div>
+    <p style="font-size:13px;color:var(--muted);margin:-6px 0 18px">※ 프로필 이미지는 공개 출처(Stimson Center·GitHub·언론 보도)에서 확보한 3명을 표시.</p>
+
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>호스트(영문)</th><th>한글명</th><th>소속·약력</th></tr></thead>
+      <tbody>
+        <tr><td><div class="who"><img src="assets/choi-kanggeun.jpg" alt="최강근"><b>David Choi</b></div></td><td>최강근</td><td><b>EGCED Tech 대표</b>(주최사) / 육군 특전사 예비역 소령</td></tr>
+        <tr><td><b>Kiyeon Kim</b></td><td>김기연</td><td><b>Prairie Schooner 대표</b> / 한양대 컴공 박사·음성AI</td></tr>
+        <tr><td><b>Mingyu Park</b></td><td>박민규</td><td><b>Morph Systems 대표</b> / 서울대 항공우주·육사 AI연구원</td></tr>
+        <tr><td><div class="who"><img src="assets/sean-kwon.jpg" alt="권혁현"><b>Sean Kwon</b></div></td><td>권혁현</td><td><b>F4GE 대표</b> / 해군 UDT 출신·Stimson Center 펠로우</td></tr>
+        <tr><td><div class="who"><img src="assets/paik-gio.jpg" alt="백기오"><b>Paik Gio</b></div></td><td>백기오</td><td>Theta One ML엔지니어 / 공군 체계단(ISMG) 출신·네이버 HyperCLOVA</td></tr>
+        <tr><td><b>Claude Bloom</b></td><td>(커뮤니티)</td><td>한국 Claude AI 커뮤니티(운영: 최훈민·한원준)</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <!-- 4 · 주최측 소속 회사 -->
+  <section id="sco">
+    <h2><span class="ix">4</span>주최측 소속 회사</h2>
+    <p>핵심 주최진 4인의 소속 회사는 모두 국방테크 스타트업으로, 해커톤의 멘토·심사 인력이기도 하다. 회사별 사업 영역과 관련 트랙은 다음과 같다.</p>
+
+    <div class="co">
+      <div class="co-head"><span class="cn">EGCED Tech · 익시드테크</span><span class="ce">대표 최강근 (David Choi) · 주최사</span><span class="trk">T5 교육·시뮬레이션</span></div>
+      <p class="lead">국방 교육훈련에 AI를 적용하는 스타트업. D4D를 총괄 주최한다.</p>
+      <dl>
+        <dt>핵심 제품</dt><dd><b>AI-COMMAND</b> — LLM + 확률형 AI 기반 장교 워게임 시뮬레이션. <b>MDMP(군사 의사결정 절차)</b> 안에서 다수 <b>COA(방책)</b>를 비교·평가. 장진호 전투 기반 한·미·NATO 연합작전 시나리오로 설계.</dd>
+        <dt>검증 사례</dt><dd>KST특수전직업전문학교 AI 교육 MOU(2025.12) · 한국대드론산업협회 안티드론 운용자 교육에 플랫폼 도입(2026.3~) · 미 National Security Hackathon에서 개발(2025).</dd>
+        <dt>대표 역량</dt><dd>최강근 — 육군 특전사 예비역 소령. RANGER·HALO·Combat Diver 이수. MDMP·연합작전 교리에 정통.</dd>
+      </dl>
+      <div class="use"><b>관련 트랙:</b> ⑤ 교육·시뮬레이션(주), ① 대드론 운용교육, ③ C2 의사결정. <b>멘토링 분야:</b> MDMP·COA·워게임 LLM 설계, 작전 교리 검토.</div>
+    </div>
+
+    <div class="co">
+      <div class="co-head"><span class="cn">Prairie Schooner · 프레리스쿠너</span><span class="ce">대표 김기연 (Kiyeon Kim) · 판교, 2023.8 설립</span><span class="trk">T1 자율·무인 / T3 C2</span></div>
+      <p class="lead">온디바이스 음성 AI 군 지휘통제(C2) 스타트업. "전장의 병목은 무기가 아니라 사람"이라는 운용병목 문제에서 출발.</p>
+      <dl>
+        <dt>핵심 제품</dt><dd><b>PEGASUS</b> — 미군 보급 전술 스마트폰에서 인터넷 없이 동작하는 온디바이스 음성 AI. 통신차단 환경에서 운용자 1명이 <b>자연어 음성으로 Blue UAS 드론 3대+ 동시 지휘</b>. "정찰" 음성 → 임무 변환 → 동시 배분 → 이상 징후 자동 지도 마킹.</dd>
+        <dt>검증 사례</dt><dd>미 오리건 주방위군 훈련센터 라이브 데모(2026.4, 약 30명 앞) · 미 육군 미래사령부 컨셉 데모(2025.5) · DIU Orchestrator Challenge(최대 $100M) 겨냥 · 8월 고도화 데모 예정.</dd>
+        <dt>기술 강점</dt><dd>ICASSP 2024·INTERSPEECH 논문(음성 변환·온디바이스 음성 AI). LG·인텔·MS AI 노트북 PoC 우수 협업기업(2024).</dd>
+        <dt>대표 역량</dt><dd>김기연 — 포병학교 사격지휘 출신 + 한양대 컴공 박사(음성 AI). 현장 C2와 엣지 AI를 동시에 멘토링.</dd>
+      </dl>
+      <div class="use"><b>관련 트랙:</b> ① 자율·무인, ③ C2(음성 기반 무인기 제어). <b>멘토링 분야:</b> 통신차단·엣지 환경 설계, 온디바이스 경량화, 음성 AI, 미군 실증 데모.</div>
+    </div>
+
+    <div class="co">
+      <div class="co-head"><span class="cn">Morph Systems · 모프시스템즈</span><span class="ce">대표 박민규 (Mingyu Park) · 공동창업 구하림</span><span class="trk">T3 C2·지속지원</span></div>
+      <p class="lead">Palantir Foundry형 <b>온톨로지 기반 엔터프라이즈 AI</b>. 군수·방위 등 대규모 물자이동·추적성 환경에 강하다. 미국 매출 비중이 높다(첫해 약 40% → 80% 전망).</p>
+      <dl>
+        <dt>핵심 제품</dt><dd>데이터 관계를 정의하는 <b>온톨로지 모델</b> 구축 → ERP·물류·정산·운영 데이터를 <b>실제 의사결정·실행 워크플로우</b>로 연결.</dd>
+        <dt>레퍼런스</dt><dd>해병대 항공 <b>LLM 니보드(kneeboard)</b> — 공항·비행 데이터를 통합해 임무 브리핑 자동 생성 · LLM 기반 공급망 가시성 워크플로우.</dd>
+        <dt>대표 역량</dt><dd>박민규 — 서울대 항공우주·육사 AI연구원·강화학습 논문. 팔란티어 파운드리 컨설팅 경험에서 창업. 임무계획·의사결정 자동화에 강점.</dd>
+        <dt>최신 동향</dt><dd>매쉬업벤처스·500 Global 프리시드(2026.1) · TIPS 선정.</dd>
+      </dl>
+      <div class="use"><b>관련 트랙:</b> ③ C2·지속지원. <b>멘토링 분야:</b> 데이터 통합·온톨로지 설계, 의사결정·실행 워크플로우, 군수 추적성·공급망 가시성.</div>
+    </div>
+
+    <div class="co">
+      <div class="co-head"><span class="cn">F4GE · 포지</span><span class="ce">대표 권혁현 (Sean Kwon) · f4ge.org</span><span class="trk">T1 자율·무인 하드웨어 양산</span></div>
+      <p class="lead">AI 정밀제조 스타트업 — "<b>Defense Production at Software Speed</b>". 검증된 생산 네트워크를 조율하는 Tier-1 제조 파트너 모델.</p>
+      <dl>
+        <dt>핵심 사업</dt><dd><b>Factory OS</b>(공장 표준화 운영체제, Requirements→R&amp;D→CAD→Test 7단계 추적성)를 유휴 브라운필드 공장에 배치. 5축 CNC·사출·적층·단조·주조. 대상: <b>UAV·USV·UGV·미사일</b>·항공우주·로보틱스·반도체 장비. ISO 9001·IATF 16949·Nadcap-Ready.</dd>
+        <dt>문제의식</dt><dd>"무인·자율 시대 전쟁의 진짜 병목은 기술이 아니라 <b>제조 처리량(throughput)</b>". 한국 뿌리기업 6만 개를 Physical AI 생산체계로 전환.</dd>
+        <dt>대표 역량</dt><dd>권혁현 — 해군 UDT/SEAL 출신, Stimson Center 펠로우(AI·첨단제조), 500 Global 출신(2회 창업).</dd>
+        <dt>최신 동향</dt><dd>오렌지플래닛 2026 상반기 18팀 선정(경쟁률 25:1) · GAIC 2026 방산투자 세션 연사(5/21).</dd>
+      </dl>
+      <div class="use"><b>관련 트랙:</b> ① 자율·무인 하드웨어(양산). <b>멘토링 분야:</b> 프로토타입→양산 전환, DFM(제조성 검토), 국방 공급망 인증, 제조 처리량 설계.</div>
+    </div>
+
+    <p style="font-size:13px;color:var(--muted);margin:4px 0 0">＋ 호스트 <b>백기오</b>의 소속 <b>Theta One</b>은 영어회화 생성 AI 스타트업(국방 외)으로, 멀티모달 LM·정렬학습(ACL 2025 Findings 1저자)·공군 체계단 SW·네이버 HyperCLOVA X Vision 경력 — <b>AI/LLM 엔지니어링 멘토</b> 관점에서 결합된다.</p>
+  </section>
+
+  <!-- 4 -->
+  <section id="s4">
+    <h2><span class="ix">5</span>누가 후원·파트너인가</h2>
+    <p>파트너 5곳은 VC가 아니라 모두 국방테크 스타트업이다.</p>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>파트너</th><th>사업 영역</th><th>해커톤 역할</th></tr></thead>
+      <tbody>
+        <tr><td><b>StealthMole</b></td><td>딥웹·다크웹 위협 인텔리전스 (싱가포르 본사 한국계, CEO 허영일)</td><td><b>OSINT 트랙 500만원 상금</b>(유일 명시) + DBN 발표</td></tr>
+        <tr><td><b>BONE AI</b></td><td>Physical AI 자율 로보틱스/안티드론 (CEO 이도경)</td><td>빌더·생태계 파트너, DBN 발표</td></tr>
+        <tr><td><b>F4GE</b> ("포지")</td><td>AI 정밀제조 "Defense Production at Software Speed" (CEO 권혁현)</td><td>생태계 파트너(대표가 호스트)</td></tr>
+        <tr><td><b>Morph Systems</b></td><td>Palantir형 국방 엔터프라이즈 AI (CEO 박민규)</td><td>생태계 파트너(대표가 호스트)</td></tr>
+        <tr><td><b>Prairie Schooner</b></td><td>온디바이스 음성AI 군 지휘통제 'PEGASUS' (CEO 김기연)</td><td>생태계 파트너(대표가 호스트)</td></tr>
+      </tbody>
+    </table></div>
+    <p><b>커뮤니티 파트너</b>: Claude Bloom 커뮤니티(Anthropic Claude 앰배서더 주관 한국 AI 밋업, Discord <code>aXrYNGZM3J</code>), 공군 체계단 Alumni</p>
+
+    <h3>파트너사 2026 최신 동향</h3>
+    <div class="grid">
+      <div class="card"><h4>BONE AI</h4><p>DS투자파트너스 주도 시드 익스텐션 ~300억원(6월 마무리), 누적 400~500억. 경북 상주 AI 산불 드론 사업</p></div>
+      <div class="card"><h4>Prairie Schooner</h4><p>미 오리건 주방위군 훈련센터 라이브 데모 성공(4월), 美 DIU Orchestrator Challenge(최대 $100M) 겨냥</p></div>
+      <div class="card"><h4>StealthMole</h4><p>크레센도에 51.8%(약 260억) 인수 완료(3월), 허영일 대표 잔류</p></div>
+      <div class="card"><h4>Morph Systems</h4><p>본사 미국 팔로알토, 美 매출 비중 40%→80% 전망</p></div>
+      <div class="card"><h4>F4GE</h4><p>오렌지플래닛 2026 상반기 18팀 선정(25:1), GAIC 2026 방산투자 세션 연사(5/21)</p></div>
+    </div>
+  </section>
+
+  <!-- 6 · 심사 기준 -->
+  <section id="s5">
+    <h2><span class="ix">6</span>심사 기준</h2>
+    <p>멘토 구성은 "현장 군(軍) 멘토 + AI/SW/HW 기술 멘토"로 공개돼 있다. 심사는 2단계로 진행된다.</p>
+    <div class="grid">
+      <div class="card"><h4>1차 심사</h4><p>문제 적합성 25% · 군 적용 가능성 30% · 기술 구현 25% · 창의성 20%</p></div>
+      <div class="card"><h4>2차 심사 (최종 피칭)</h4><p>임팩트·확장성 35% · 글로벌 확장성 25% · 기술 난이도 20% · 팀 추진력 20%</p></div>
+      <div class="card"><h4>특별상</h4><p>Global Bridge Pick — 상금 외 글로벌 진출 연계 선정</p></div>
+    </div>
+  </section>
+
+  <!-- 7 · 상금 구조 -->
+  <section id="s6">
+    <h2><span class="ix">7</span>상금 구조</h2>
+    <div class="tbl-wrap"><table>
+      <tbody>
+        <tr><td><b>총 1,500만원</b></td><td>1,000만 → 6/13 증액</td></tr>
+        <tr><td><b>OSINT 트랙</b></td><td>500만원 (StealthMole 제공)</td></tr>
+        <tr><td><b>Global Bridge Pick</b></td><td>상금 외 — 글로벌 디펜스 네트워크 연계 선정</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <!-- src -->
+  <section id="src">
+    <h2><span class="ix">8</span>주요 출처</h2>
+    <div class="sources">
+      <a href="https://luma.com/2ew4xn7b">Luma D4D 공식 페이지</a>
+      <a href="https://luma.com/7iiqamt2">Road to ICML 2026 Seoul 캘린더</a>
+      <a href="https://icml.cc/Conferences/2026">ICML 2026 공식</a>
+      <a href="https://www.edaily.co.kr/News/Read?newsId=04100006645379712&mediaCodeNo=257">edaily — Defense Builders Night 기사</a>
+      <a href="https://v.daum.net/v/20251229172300080">익시드테크 MOU 보도(다음)</a>
+      <a href="https://www.korea.kr/news/policyNewsView.do?newsId=148959821">방산 스타트업 육성방안(정책브리핑)</a>
+      <a href="https://wowtale.net/2026/05/14/258632/">코스포 방위산업협의회 출범(wowtale)</a>
+      <a href="https://www.hankyung.com">StealthMole 크레센도 인수(한국경제)</a>
+      <a href="https://www.stimson.org/ppl/sean-hyuk-hyun-kwon/">Stimson Center — Sean Kwon(권혁현)</a>
+      <a href="https://morphsys.ai/">Morph Systems 공식 사이트</a>
+      <a href="https://www.f4ge.org/">F4GE 공식 사이트</a>
+      <a href="https://edaily.co.kr/News/Read?mediaCodeNo=257&newsId=02125446645449576">프레리스쿠너 PEGASUS·미군 실증(edaily)</a>
+      <a href="https://www.digitaltoday.co.kr/news/articleView.html?idxno=622601">모프시스템즈 프리시드(디지털투데이)</a>
+      <a href="https://edaily.co.kr/News/Read?mediaCodeNo=257&newsId=05146326645451216">F4GE — GAIC 2026 제조 처리량(edaily)</a>
+      <a href="https://zdnet.co.kr/view/?no=20260525110342">익시드테크·코스포 방산협의회(ZDNet)</a>
+      <a href="https://blog.cliwant.com/claude-bloom-anthropic-cliwant-meetup-recap/">Claude Bloom 리캡(Cliwant)</a>
+      <a href="https://luma.com/edth-2026-brussels">EDTH Brussels(브랜드 원형)</a>
+    </div>
+  </section>
+
+  <footer>
+    <span>정리일 <span class="tag">2026-06-27</span></span>
+    <span>출처: Luma 및 언론·공식 사이트</span>
+  </footer>
+
+</div>
+</body>
+</html>

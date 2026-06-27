@@ -64,6 +64,13 @@ function Hero() {
         <div className="hero__meta">
           <span className="chip chip--live">{TEAM.track}</span>
           <span className="chip">{TEAM.date}</span>
+          <a
+            className="chip"
+            href={`${import.meta.env.BASE_URL}d4d/`}
+            style={{ textDecoration: 'none', borderColor: '#00e5a0', color: '#00e5a0' }}
+          >
+            D4D 행사 분석 →
+          </a>
         </div>
 
         <a className="hero__scroll" href="#about">
@@ -189,6 +196,11 @@ function Footer() {
         {TEAM.hackathon} · {TEAM.location}
       </p>
       <p className="footer__credit">Built for Counter-UAS · Deploy for Defense</p>
+      <p className="footer__credit" style={{ marginTop: '14px' }}>
+        <a href={`${import.meta.env.BASE_URL}d4d/`} style={{ color: '#00e5a0', textDecoration: 'none' }}>
+          D4D 행사 심층 분석 페이지 →
+        </a>
+      </p>
     </footer>
   )
 }
