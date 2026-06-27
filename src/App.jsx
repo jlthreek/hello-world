@@ -71,6 +71,13 @@ function Hero() {
           >
             D4D 행사 분석 →
           </a>
+          <a
+            className="chip"
+            href={`${import.meta.env.BASE_URL}track1/`}
+            style={{ textDecoration: 'none', borderColor: '#37b6ff', color: '#37b6ff' }}
+          >
+            Track 1 예상 주제 →
+          </a>
         </div>
 
         <a className="hero__scroll" href="#about">
@@ -198,7 +205,11 @@ function Footer() {
       <p className="footer__credit">Built for Counter-UAS · Deploy for Defense</p>
       <p className="footer__credit" style={{ marginTop: '14px' }}>
         <a href={`${import.meta.env.BASE_URL}d4d/`} style={{ color: '#00e5a0', textDecoration: 'none' }}>
-          D4D 행사 심층 분석 페이지 →
+          D4D 행사 심층 분석 →
+        </a>
+        <span style={{ color: '#3a4a55', margin: '0 10px' }}>·</span>
+        <a href={`${import.meta.env.BASE_URL}track1/`} style={{ color: '#37b6ff', textDecoration: 'none' }}>
+          Track 1 예상 주제 10선 →
         </a>
       </p>
     </footer>
