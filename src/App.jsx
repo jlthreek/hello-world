@@ -76,7 +76,7 @@ function Hero() {
             href={`${import.meta.env.BASE_URL}track1/`}
             style={{ textDecoration: 'none', borderColor: '#37b6ff', color: '#37b6ff' }}
           >
-            Track 1 예상 주제 →
+            Track 1 공식 과제 →
           </a>
         </div>
 
@@ -209,7 +209,7 @@ function Footer() {
         </a>
         <span style={{ color: '#3a4a55', margin: '0 10px' }}>·</span>
         <a href={`${import.meta.env.BASE_URL}track1/`} style={{ color: '#37b6ff', textDecoration: 'none' }}>
-          Track 1 예상 주제 10선 →
+          Track 1 공식 과제 6선 →
         </a>
       </p>
     </footer>

@@ -3,14 +3,13 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="D4D Track 1 — Counter-UAS 주제 10선 (팀 가능성순·자원 포함) · Team AEGIS" />
-<title>D4D · Track 1 주제 10선 — 팀 가능성순</title>
+<meta name="description" content="D4D Track 1 — 국방 무인체계 공식 과제 (Counter-UAS · MUM-T) · Team AEGIS" />
+<title>D4D · Track 1 공식 과제 — 무인체계</title>
 <style>
   :root{
     --bg:#05080c; --panel:rgba(255,255,255,.035); --brd:rgba(255,255,255,.09);
     --ink:#e8f0f5; --muted:#8aa0b0; --green:#00e5a0; --blue:#37b6ff;
-    --green-dim:rgba(0,229,160,.1);
-    --jch:#00e5a0; --lmh:#37b6ff; --khj:#b388ff; --kyj:#ffb74d; --kjh:#ff6b6b;
+    --kyj:#ffb74d; --khj:#b388ff; --kjh:#ff6b6b;
     --font:'Pretendard',system-ui,-apple-system,'Segoe UI',Roboto,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;
     --mono:'JetBrains Mono','SFMono-Regular',ui-monospace,Menlo,Consolas,monospace;
   }
@@ -33,48 +32,46 @@
   .lead{color:var(--muted); font-size:1rem; line-height:1.7; margin:0;}
   .lead b{color:var(--green);}
 
-  /* team roster */
-  .roster{margin:26px 0 6px;}
-  .roster__t{font-family:var(--mono); font-size:.66rem; letter-spacing:.18em; color:var(--muted); text-transform:uppercase; margin-bottom:10px;}
-  .roster__grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:8px;}
-  .mem{border:1px solid var(--brd); border-left-width:3px; border-radius:8px; padding:9px 12px; background:var(--panel);}
-  .mem b{font-size:.92rem;}
-  .mem span{display:block; font-family:var(--mono); font-size:.66rem; color:var(--muted); margin-top:2px;}
+  /* index nav */
+  .toc{margin:24px 0 4px; display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:8px;}
+  .toc a{display:flex; gap:10px; align-items:baseline; border:1px solid var(--brd); border-radius:9px;
+    padding:10px 13px; background:var(--panel); text-decoration:none; color:var(--ink); transition:border-color .2s;}
+  .toc a:hover{border-color:var(--blue);}
+  .toc .n{font-family:var(--mono); font-weight:800; color:var(--green); font-size:.8rem;}
+  .toc .t{font-size:.82rem; line-height:1.35;}
 
-  .cards{display:flex; flex-direction:column; gap:14px; margin-top:30px;}
+  .cards{display:flex; flex-direction:column; gap:16px; margin-top:30px;}
   .card{position:relative; background:var(--panel); border:1px solid var(--brd); border-radius:16px;
-    padding:20px 22px; transition:border-color .25s;}
+    padding:22px 24px; transition:border-color .25s; scroll-margin-top:20px;}
   .card:hover{border-color:rgba(0,229,160,.35);}
-  .chead{display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-bottom:4px;}
+
+  .chead{display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-bottom:6px;}
   .rk{font-family:var(--mono); font-weight:800; font-size:1.05rem; color:var(--green);}
-  .feas{font-family:var(--mono); font-size:.66rem; font-weight:700; padding:3px 9px; border-radius:999px; letter-spacing:.04em; margin-left:auto;}
-  .f5{background:rgba(0,229,160,.16); color:var(--green); border:1px solid rgba(0,229,160,.4);}
-  .f4{background:rgba(55,182,255,.14); color:var(--blue); border:1px solid rgba(55,182,255,.4);}
-  .f3{background:rgba(255,183,77,.14); color:var(--kyj); border:1px solid rgba(255,183,77,.4);}
-  .f2{background:rgba(255,138,80,.14); color:#ff8a50; border:1px solid rgba(255,138,80,.4);}
-  .f1{background:rgba(255,107,107,.14); color:var(--kjh); border:1px solid rgba(255,107,107,.4);}
-  .ttl{font-size:1.16rem; font-weight:800; letter-spacing:-.01em; margin:2px 0 1px; line-height:1.3;}
-  .en{font-family:var(--mono); font-size:.7rem; color:var(--muted); letter-spacing:.04em; text-transform:uppercase;}
-  .link{display:inline-flex; align-items:center; gap:8px; margin:11px 0 0; padding:5px 11px; border-radius:8px;
-    background:rgba(55,182,255,.07); border:1px solid rgba(55,182,255,.22);}
-  .link__t{font-family:var(--mono); font-size:.58rem; letter-spacing:.1em; color:var(--muted); text-transform:uppercase;}
-  .link__c{font-family:var(--mono); font-size:.74rem; color:var(--blue); font-weight:700;}
-  .vision{color:#c7d4dd; font-size:.92rem; line-height:1.62; margin:13px 0 0;}
-  .fit{font-size:.86rem; line-height:1.6; margin:9px 0 0; color:var(--muted);}
-  .fit b{color:var(--ink);}
-  .mtag{font-family:var(--mono); font-weight:700; font-size:.8em;}
+  .cat{font-family:var(--mono); font-size:.64rem; font-weight:700; padding:3px 9px; border-radius:999px;
+    letter-spacing:.06em; margin-left:auto; text-transform:uppercase;
+    background:rgba(55,182,255,.13); color:var(--blue); border:1px solid rgba(55,182,255,.4);}
+  .cat.special{background:rgba(255,183,77,.13); color:var(--kyj); border-color:rgba(255,183,77,.4);}
+  .cat.test{background:rgba(255,107,107,.13); color:var(--kjh); border-color:rgba(255,107,107,.4);}
+  .ttl{font-size:1.2rem; font-weight:800; letter-spacing:-.01em; margin:2px 0 1px; line-height:1.3; width:100%;}
+  .en{font-family:var(--mono); font-size:.72rem; color:var(--muted); letter-spacing:.05em; text-transform:uppercase;}
 
-  .res{margin-top:14px; border-top:1px solid var(--brd); padding-top:13px; display:flex; flex-direction:column; gap:9px;}
-  .r{display:grid; grid-template-columns:92px 1fr; gap:10px; align-items:start;}
-  .rl{font-family:var(--mono); font-size:.64rem; letter-spacing:.06em; text-transform:uppercase; color:var(--muted);
-    border:1px solid var(--brd); border-radius:5px; padding:3px 0; text-align:center;}
-  .rl.hw{color:var(--kjh); border-color:rgba(255,107,107,.3);}
-  .rl.inf{color:var(--blue); border-color:rgba(55,182,255,.3);}
-  .rv{font-size:.84rem; line-height:1.55; color:#cdd8e0;}
-  .rv code{font-family:var(--mono); font-size:.82em; background:rgba(255,255,255,.05); padding:1px 6px; border-radius:5px; color:#e8f0f5;}
-  .warn{color:var(--kjh); font-size:.8rem; margin-top:6px; font-family:var(--mono);}
+  .blk{margin-top:15px;}
+  .blk__t{font-family:var(--mono); font-size:.62rem; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); margin:0 0 7px;}
+  .bg{color:#c7d4dd; font-size:.92rem; line-height:1.68; margin:0;}
 
-  @media(max-width:540px){ .r{grid-template-columns:1fr;} .rl{display:inline-block; padding:3px 10px;} }
+  .mission{border-left:3px solid var(--green); background:rgba(0,229,160,.05);
+    border-radius:0 10px 10px 0; padding:13px 16px; margin-top:15px;}
+  .mission .blk__t{color:var(--green);}
+  .mission p{margin:0; color:#dbe6ec; font-size:.94rem; line-height:1.66;}
+  .mission p + p{margin-top:9px;}
+
+  .reqs{list-style:none; margin:9px 0 0; padding:0; display:flex; flex-direction:column; gap:7px;}
+  .reqs li{position:relative; padding-left:20px; font-size:.88rem; line-height:1.55; color:#cdd8e0;}
+  .reqs li::before{content:'▸'; position:absolute; left:0; color:var(--blue); font-size:.85em;}
+
+  .sub{border:1px solid var(--brd); border-radius:10px; padding:12px 15px; margin-top:11px; background:rgba(255,255,255,.02);}
+  .sub b{color:var(--green); font-family:var(--mono); font-size:.82rem;}
+  .sub p{margin:5px 0 0; font-size:.86rem; line-height:1.6; color:#cdd8e0;}
 
   footer{margin-top:48px; padding-top:22px; border-top:1px solid var(--brd);
     display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
@@ -88,170 +85,206 @@
   <a class="back" href="../">← TEAM AEGIS · 팀소개로</a>
 
   <header class="hero">
-    <div class="tag">D4D · Track 1 — Counter-UAS (Anti-Drone)</div>
-    <h1>Track 1 주제 10선 <span class="hl">· 팀 가능성순</span></h1>
-    <p class="lead">24시간 MVP 제약을 풀고 <b>완성형 시스템 규모</b>로 범위를 넓힌 뒤, TEAM AEGIS 5인의 실제 분야에 비춘 <b>실현 가능성(팀 적합도) 순</b>으로 정렬했습니다.
-      각 주제마다 주최측 연계 · 넓은 범위 비전 · <b>필요 기술스택 / 하드웨어 / 인프라·자원</b>을 함께 담았습니다.</p>
+    <div class="tag">D4D · Track 1 — 무인체계 / Counter-UAS</div>
+    <h1>Track 1 <span class="hl">공식 과제</span></h1>
+    <p class="lead">유무인 복합체계(MUM-T)와 Counter-UAS 분야의 <b>공개 도전 과제 6선</b>.
+      각 과제는 <b>배경 · 과제 정의 · 세부 요구사항</b>으로 구성됩니다.</p>
 
-    <div class="roster">
-      <div class="roster__t">// Team Fields</div>
-      <div class="roster__grid">
-        <div class="mem" style="border-left-color:var(--jch)"><b>JCH</b><span>Product · Frontend / iOS</span></div>
-        <div class="mem" style="border-left-color:var(--lmh)"><b>LMH</b><span>Backend · Infra / ex-임베디드·EV</span></div>
-        <div class="mem" style="border-left-color:var(--khj)"><b>KHJ</b><span>AI Engineer / LLM</span></div>
-        <div class="mem" style="border-left-color:var(--kyj)"><b>KYJ</b><span>Data / 항공안전·예측(ex-Boeing)</span></div>
-        <div class="mem" style="border-left-color:var(--kjh)"><b>KJH</b><span>Domain / 안티드론 재머 펌웨어</span></div>
-      </div>
-    </div>
+    <nav class="toc">
+      <a href="#c1"><span class="n">01</span><span class="t">1인 다중 무인기 동시 통제</span></a>
+      <a href="#c2"><span class="n">02</span><span class="t">산악·도심 혼재 지형 자율 운용</span></a>
+      <a href="#c3"><span class="n">03</span><span class="t">수도권 영공 침투 대응 (C-UAS)</span></a>
+      <a href="#c4"><span class="n">04</span><span class="t">CCA 임무배분 샌드박스</span></a>
+      <a href="#c5"><span class="n">05</span><span class="t">자율 요격 드론 Mini Op Test</span></a>
+      <a href="#c6"><span class="n">06</span><span class="t">무선침묵 환경 피아식별 (IFF)</span></a>
+    </nav>
   </header>
 
   <div class="cards">
 
     <!-- 1 -->
-    <article class="card">
-      <div class="chead"><span class="rk">#1</span><span class="ttl">LLM 교전 의사결정 코파일럿 (ROE/COA)</span><span class="feas f5">가능성 매우 높음</span></div>
-      <div class="en">LLM Engagement Decision Copilot</div>
-      <div class="link"><span class="link__t">주최측 연계</span><span class="link__c">EGCED Tech · Claude Bloom · Morph</span></div>
-      <p class="vision">단발 챗봇이 아니라, 실시간 융합 트랙을 입력받아 교전수칙(ROE)·교범 근거로 가능한 모든 방책(COA)을 생성·비교·설명하고, 교전 후 디브리핑까지 자동화하는 의사결정 지원 체계. 한·영 연합작전 지원으로 확장.</p>
-      <p class="fit"><b>팀 적합:</b> <span class="mtag" style="color:var(--khj)">KHJ</span> LLM·<span class="mtag" style="color:var(--jch)">JCH</span> 대시보드·<span class="mtag" style="color:var(--kjh)">KJH</span> ROE 현실성·<span class="mtag" style="color:var(--kyj)">KYJ</span> 위협 데이터 — 거의 전원 소프트웨어, 팀 LLM 강점 정중앙.</p>
-      <div class="res">
-        <div class="r"><span class="rl">기술스택</span><span class="rv">Claude/LLM <code>tool-use</code> · RAG(<code>pgvector</code>/Chroma) · LangGraph 에이전트 · React 대시보드 · WebSocket</span></div>
-        <div class="r"><span class="rl hw">하드웨어</span><span class="rv">없음 — 시연용 노트북·대형 디스플레이</span></div>
-        <div class="r"><span class="rl inf">인프라·자원</span><span class="rv">LLM API(Anthropic 크레딧) 또는 사내 GPU 추론 · 벡터DB · Docker 백엔드 · ROE/교범 코퍼스</span></div>
+    <article class="card" id="c1">
+      <div class="chead"><span class="rk">#1</span><span class="cat">범용</span></div>
+      <div class="ttl">1인 다중 무인기 동시 통제</div>
+      <div class="en">Multi-UxV Control</div>
+
+      <div class="blk">
+        <p class="blk__t">// 배경</p>
+        <p class="bg">최근 전장에서 드론을 비롯한 UGV, USV 등 다양한 무인 시스템의 운용 비중이 급증하고 있습니다. 그러나 현행 운용 방식은 장비 증가에 비례해 운용 인력 또한 동반 요구되는 선형적 구조 한계를 지니고 있습니다. 이는 인구 절벽 및 병력 감소 직면국(한국 및 APAC)의 장기 전력 운용 측면에서 지속 불가능합니다. 따라서 미래 전장은 단일 운용자가 다수의 무인체계를 통합 감독·제어하는 유무인 복합 체계로의 전환이 필수적입니다.</p>
+      </div>
+
+      <div class="mission">
+        <p class="blk__t">// 과제</p>
+        <p>단일 운용자가 공중·지상·해상의 이종(UxV) 무인체계 3대 이상을 동시에 임무 부여, 감시, 통제할 수 있는 체계를 개발하라.</p>
+        <p>운용자 인지부하(Cognitive Load)를 최소화하면서도 임무 성공률을 유지하거나 향상시킬 수 있는 방안을 제시할 것.</p>
+      </div>
+
+      <div class="blk">
+        <p class="blk__t">// 세부 요구사항</p>
+        <ul class="reqs">
+          <li>임무 단위 추상화(개별 조종 → 임무 의도 입력) 인터페이스</li>
+          <li>다수 무인기의 자율 임무 분산·역할 할당</li>
+          <li>운용자 인지부하 모니터링 및 우선순위 알림</li>
+          <li>이상·위협 발생 시 사람 개입 지점(human-in-the-loop) 설계</li>
+          <li>인력 절감률·임무 성공률 측정 프레임워크</li>
+        </ul>
       </div>
     </article>
 
     <!-- 2 -->
-    <article class="card">
-      <div class="chead"><span class="rk">#2</span><span class="ttl">임무계획·지속지원 자동화 (LLM 니보드형)</span><span class="feas f5">가능성 매우 높음</span></div>
-      <div class="en">Mission &amp; Sustainment Autogen</div>
-      <div class="link"><span class="link__t">주최측 연계</span><span class="link__c">Morph Systems · EGCED Tech</span></div>
-      <p class="vision">대드론 작전의 임무 브리핑과 자산·소모품(재머 배터리·전원·예비 안테나) 지속지원을 통합한 운영 OS. 부대 단위 재고·정비·보급을 LLM이 자동 집계하고 수요를 예측해 발주까지.</p>
-      <p class="fit"><b>팀 적합:</b> <span class="mtag" style="color:var(--khj)">KHJ</span> LLM·<span class="mtag" style="color:var(--kyj)">KYJ</span> 수요예측(보잉 경험 직결)·<span class="mtag" style="color:var(--jch)">JCH</span> UI·<span class="mtag" style="color:var(--lmh)">LMH</span> 백엔드 — 전원 소프트웨어.</p>
-      <div class="res">
-        <div class="r"><span class="rl">기술스택</span><span class="rv">LLM 구조화 출력 · ETL 파이프라인 · 시계열 수요예측 · <code>PostgreSQL</code> · 리포트(PDF) 생성</span></div>
-        <div class="r"><span class="rl hw">하드웨어</span><span class="rv">없음</span></div>
-        <div class="r"><span class="rl inf">인프라·자원</span><span class="rv">DB · Docker 백엔드 · LLM API · (선택) 예측 모델 서빙 · 정비·보급 샘플 데이터</span></div>
+    <article class="card" id="c2">
+      <div class="chead"><span class="rk">#2</span><span class="cat special">특수상황</span></div>
+      <div class="ttl">산악·도심 혼재 지형 자율 드론 운용</div>
+      <div class="en">Terrain-Aware Autonomy</div>
+
+      <div class="blk">
+        <p class="blk__t">// 배경</p>
+        <p class="bg">최근 전장에서 드론은 핵심 전력으로 자리잡았지만, 대부분의 자율비행 알고리즘은 공중 최단거리 이동 중심의 단조로운 지형(예: 우크라이나)을 전제로 설계되어 있어, 복합 지형 환경을 반영한 고도화가 요구됩니다. 반면 APAC 작전 환경은 산악, 도서, 해안선 및 고밀도 도심이 중첩된 복합 지형의 특성을 보입니다. 이로 인해 작전 시 GPS 음영, 통신 단절, 전자전(EW) 저해 행위, 지형적 차폐물 등의 고위험 변수가 복합적으로 작용하여 단순 선형 경로 비행을 통한 임무 달성이 제한됩니다. 이에 따라 차세대 자율 시스템은 단순 목적지 이동 차원을 넘어, 복잡 지형과 동적 위협을 실시간으로 인지·판단하고 자체 생존성을 극대화할 수 있는 '지형 인지형 자율성(Terrain-Aware Autonomy)' 확보가 시급합니다.</p>
+      </div>
+
+      <div class="mission">
+        <p class="blk__t">// 과제</p>
+        <p>산악·도서·도심이 혼재된 APAC 환경에서 드론이 지형을 활용해 이동하고, 통신을 유지하며, 전자전 위협 속에서도 임무를 지속할 수 있는 Terrain-Aware Autonomy 체계를 개발하라.</p>
+      </div>
+
+      <div class="blk">
+        <p class="blk__t">// 세부 요구사항</p>
+        <ul class="reqs">
+          <li>산악·도서 지형을 고려한 3D 경로 계획 알고리즘</li>
+          <li>지형을 엄폐물로 활용하는 Terrain Following / Masking 비행</li>
+          <li>전자전(EW) 신호의 탐지·방향 추정 및 회피 기동</li>
+          <li>RF·LTE·위성통신 품질을 예측해 통신 단절을 최소화하는 경로 설계</li>
+          <li>위협 발생 시 실시간 자율 임무 재계획(Autonomous Re-Planning)</li>
+          <li>다수 드론의 협업 비행 및 자율 임무 분산</li>
+        </ul>
       </div>
     </article>
 
     <!-- 3 -->
-    <article class="card">
-      <div class="chead"><span class="rk">#3</span><span class="ttl">대드론 운용자 AI 훈련 시뮬레이터</span><span class="feas f4">가능성 높음</span></div>
-      <div class="en">C-UAS Operator Trainer</div>
-      <div class="link"><span class="link__t">주최측 연계</span><span class="link__c">EGCED Tech (안티드론 운용자 교육 납품)</span></div>
-      <p class="vision">스웜·기만·저고도 등 다양한 드론 위협 시나리오를 절차적으로 생성하고, 운용자의 탐지·식별·교전 결정을 기록해 LLM이 교리(MDMP) 기준으로 평가·코칭. 리더보드·운용자 인증까지.</p>
-      <p class="fit"><b>팀 적합:</b> <span class="mtag" style="color:var(--jch)">JCH</span> 시뮬 UI·<span class="mtag" style="color:var(--khj)">KHJ</span> LLM 평가·<span class="mtag" style="color:var(--kjh)">KJH</span> 시나리오 현실성·<span class="mtag" style="color:var(--kyj)">KYJ</span> 채점 — 웹 기반 소프트웨어.</p>
-      <div class="res">
-        <div class="r"><span class="rl">기술스택</span><span class="rv">WebGL/Three.js 또는 Unity · 시나리오 절차생성 · LLM 평가 · React · 상태기록 DB</span></div>
-        <div class="r"><span class="rl hw">하드웨어</span><span class="rv">없음(웹) · (선택) VR 헤드셋</span></div>
-        <div class="r"><span class="rl inf">인프라·자원</span><span class="rv">웹 호스팅 · LLM API · DB · 실시간 상태 동기 · 위협 시나리오 자료</span></div>
+    <article class="card" id="c3">
+      <div class="chead"><span class="rk">#3</span><span class="cat special">특수상황</span></div>
+      <div class="ttl">수도권 영공 소형드론·풍선 침투 대응</div>
+      <div class="en">Gray-zone C-UAS</div>
+
+      <div class="blk">
+        <p class="blk__t">// 배경</p>
+        <p class="bg">최근 소형 무인기 및 침투용 풍선 도발 사례는 수도권 영공이 더 이상 전통적인 항공 위협에만 국한되지 않는 저강도 회색지대(Gray-zone) 도발 공간으로 변모했음을 시사합니다. 특히 LSS(저고도·저속·저신호) 비행체는 기존 광역 레이더 체계로 탐지·식별이 제한되며, 인구 밀집 도심지 특성상 물리적 타격 시 심각한 부수적 피해(Collateral Damage)를 초래할 수 있습니다. 따라서 단순 탐지 성능의 고도화를 넘어, 극히 제한된 골든타임 내에 위협 수준을 정확히 식별·평가하고 최적의 저위험 대응 옵션을 결심할 수 있는 지능형 지휘통제 능력이 요구됩니다.</p>
+      </div>
+
+      <div class="mission">
+        <p class="blk__t">// 과제</p>
+        <p>도심 환경에서 소형 드론·풍선 등 저신호 비행체를 탐지, 추적, 식별하고 위협도를 평가하여 대응 결심을 지원하는 Gray-zone Counter-UAS 체계를 개발하라.</p>
+        <p>(인구 밀집 도심 상공에서 저고도 소형 비행체(드론·풍선)를 탐지→추적→식별→대응 결심까지 지원하는 의사결정 체계)</p>
+      </div>
+
+      <div class="blk">
+        <p class="blk__t">// 세부 요구사항</p>
+        <ul class="reqs">
+          <li>RF·EO/IR·레이더 융합 저신호 표적 탐지</li>
+          <li>도심 클러터(잡신호) 환경에서의 오탐 저감</li>
+          <li>비행체 유형(드론/풍선/조류) 분류 및 위협도 평가</li>
+          <li>부수피해를 고려한 대응 옵션(소프트킬/하드킬) 추천</li>
+          <li>다중 침투체 동시 추적 및 경보 시각화</li>
+        </ul>
       </div>
     </article>
 
     <!-- 4 -->
-    <article class="card">
-      <div class="chead"><span class="rk">#4</span><span class="ttl">안티드론 킬체인 자동화 <span style="color:var(--green); font-size:.7em; font-family:var(--mono)">★팀 차별화</span></span><span class="feas f4">가능성 높음</span></div>
-      <div class="en">Closed-Loop Counter-UAS Kill Chain</div>
-      <div class="link"><span class="link__t">주최측 연계</span><span class="link__c">BONE AI ("드론판 킬체인")</span></div>
-      <p class="vision">탐지(레이더/RF) → 식별 → 소프트킬(재머 주파수·지향 자동조준)까지 닫힌 루프로 자동화하고 사람은 교전 승인(HITL)만. <b>실제 재머 펌웨어와 연동한 PoC 하드웨어</b>로 시연 — 다른 팀이 못 내는 결과물.</p>
-      <p class="fit"><b>팀 적합:</b> <span class="mtag" style="color:var(--kjh)">KJH</span> 재머 펌웨어=핵심 무기·<span class="mtag" style="color:var(--lmh)">LMH</span> 임베디드 게이트웨이·<span class="mtag" style="color:var(--khj)">KHJ</span> 오케스트레이션 — 팀만의 하드웨어 차별화.</p>
-      <div class="res">
-        <div class="r"><span class="rl">기술스택</span><span class="rv">이벤트 스트리밍(<code>MQTT</code>/Kafka) · 디바이스 제어 API · 재머 펌웨어(C/RTOS) · 규칙엔진 · 대시보드</span></div>
-        <div class="r"><span class="rl hw">하드웨어</span><span class="rv">SDR(HackRF/USRP) · 지향성 안테나 · 재머 모듈 · Jetson/RPi 게이트웨이 · 타깃 드론</span></div>
-        <div class="r"><span class="rl inf">인프라·자원</span><span class="rv">엣지 게이트웨이 · 메시지 브로커 · 시연 공간</span></div>
+    <article class="card" id="c4">
+      <div class="chead"><span class="rk">#4</span><span class="cat special">특수상황·공중 (MUM-T)</span></div>
+      <div class="ttl">CCA 임무배분 샌드박스</div>
+      <div class="en">CCA Mission Allocation Sandbox</div>
+
+      <div class="blk">
+        <p class="blk__t">// 배경</p>
+        <p class="bg">미래 공중전은 유인기 1대가 다수의 CCA(협업 전투기)·무인기를 거느리는 유무인복합(MUM-T)으로 전환되고 있다. 조종사 1명이 ISR·전자전·기만·센서확장 등 서로 다른 임무의 무인 편대를 동시에 지휘해야 하므로, 임무를 자동 배분해 인지부하를 줄이는 체계가 필요하다. (T1 '1인 다중 무인기 통제'의 공중 CCA 버전)</p>
       </div>
-      <p class="warn">⚠ 전파법: 실제 재머 송출은 차폐룸/허가 필요 → 시연은 모의신호·계측기 기반 권장.</p>
+
+      <div class="mission">
+        <p class="blk__t">// 과제</p>
+        <p>유인기 1대 + CCA/무인기 2~4대를 가정해 ISR·EW·Decoy·Sensor Extension 등 임무를 상황에 맞게 자동 배분하는 유무인복합 시뮬레이터를 개발하라. (공개·가상 데이터만)</p>
+      </div>
+
+      <div class="blk">
+        <p class="blk__t">// 세부 요구사항</p>
+        <ul class="reqs">
+          <li>임무 유형(ISR/EW/Decoy/센서확장)별 자동 배분 로직</li>
+          <li>위협·자산 상태 변화 시 실시간 재배분</li>
+          <li>조종사 인지부하 최소화 인터페이스</li>
+          <li>가상 시나리오 기반 임무 성공률 평가</li>
+          <li>유인-무인 역할 분담·교전규칙 반영</li>
+        </ul>
+      </div>
     </article>
 
     <!-- 5 -->
-    <article class="card">
-      <div class="chead"><span class="rk">#5</span><span class="ttl">온톨로지 융합 → 의사결정 파이프라인</span><span class="feas f4">가능성 높음</span></div>
-      <div class="en">Ontology Fusion to Decision</div>
-      <div class="link"><span class="link__t">주최측 연계</span><span class="link__c">Morph Systems (Palantir형 온톨로지)</span></div>
-      <p class="vision">이기종 센서(레이더·RF·EO/IR·음향·AIS)를 공통 온톨로지로 정규화해 단일 표적 객체로 융합하고, 그 위에 의사결정·실행 액션을 얹는 운영체계. 표적 이력·연관 추론까지.</p>
-      <p class="fit"><b>팀 적합:</b> <span class="mtag" style="color:var(--lmh)">LMH</span> 백엔드·DB·<span class="mtag" style="color:var(--kyj)">KYJ</span> 데이터·<span class="mtag" style="color:var(--jch)">JCH</span> 융합맵 UI — 소프트웨어, 개념 난도 높음.</p>
-      <div class="res">
-        <div class="r"><span class="rl">기술스택</span><span class="rv">그래프DB(<code>Neo4j</code>) · 스트림 처리(Kafka/Flink) · 데이터 정규화 · React + deck.gl(GIS)</span></div>
-        <div class="r"><span class="rl hw">하드웨어</span><span class="rv">없음 — 센서는 모의 피드</span></div>
-        <div class="r"><span class="rl inf">인프라·자원</span><span class="rv">그래프DB · 스트림 처리 · 백엔드 · 지도 타일 · 다종 센서 모의 데이터셋</span></div>
+    <article class="card" id="c5">
+      <div class="chead"><span class="rk">#5</span><span class="cat test">Mini Operational Test</span></div>
+      <div class="ttl">자율 요격 드론 Mini Operational Test</div>
+      <div class="en">Autonomous Counter-UAS Interceptor</div>
+
+      <div class="blk">
+        <p class="blk__t">// 배경</p>
+        <p class="bg">최근 전장에서는 FPV 드론을 이용한 직접 타격에서 나아가, 다수의 소형 드론이 동시에 침투하는 군집형 위협(Swarming Threat)이 빠르게 증가하고 있습니다. 이에 따라 Counter-UAS 또한 단순 수동 조종을 넘어, 다수의 요격 드론 운용과 AI 기반 자율 종말 유도(Autonomous Terminal Guidance)를 포함하는 방향으로 발전하고 있습니다. 실제 운용에서는 운용자가 목표 인근까지 접근시키고, 마지막 구간은 드론이 스스로 표적을 탐지·추적하여 대응하는 Human-on-the-loop 운용 개념이 중요해지고 있습니다. 이번 과제는 이러한 Counter-UAS 발전 단계를 실제 실내 환경에서 안전하게 축소 모사(Mini Operational Test)하여 검증하는 것을 목표로 합니다.</p>
+      </div>
+
+      <div class="mission">
+        <p class="blk__t">// 과제</p>
+        <p>실제 Counter-UAS 운용 절차를 실내 환경에서 축소 구현한 Mini Operational Test를 수행하라. 참가팀은 아래 3가지 운용 미션 중 하나 이상을 구현하여 Counter-UAS 체계를 제안한다.</p>
+      </div>
+
+      <div class="sub"><b>Test 1 — Manual FPV Intercept</b><p>FPV 방식으로 요격 드론을 직접 조종하여 목표(Ring)를 통과하여 기본 요격 능력을 입증한다.</p></div>
+      <div class="sub"><b>Test 2 — Multi-Interceptor Response</b><p>최소 2대 이상의 요격 드론을 활용하여 다중 위협 상황을 대응한다. 운용 방식(지상 Launch, 공중 Launch, 릴레이 등)은 자유이며, 각 요격 드론이 순차적으로 목표(Ring)를 통과하면 성공으로 인정한다.</p></div>
+      <div class="sub"><b>Test 3 — Human-on-the-loop Autonomous Intercept</b><p>운용자가 GCS를 이용해 요격 드론을 목표 인근(약 5~15m)까지 접근시킨 뒤 자율 모드로 전환한다. 이후 드론은 스스로 표적을 탐지·추적하여 목표(Ring)를 통과해야 한다.</p></div>
+
+      <div class="blk">
+        <p class="blk__t">// 세부 요구사항</p>
+        <ul class="reqs">
+          <li>FPV 기반 Manual Intercept 운용</li>
+          <li>Vision 기반 표적 탐지(Object Detection)</li>
+          <li>자율 표적 추적(Target Tracking)</li>
+          <li>Human-on-the-loop 기반 자율 종말 유도</li>
+          <li>다수 요격 드론 협업(Multi-Interceptor Coordination)</li>
+          <li>Launch 방식(지상·공중·릴레이) 설계</li>
+          <li>운용 개념(CONOPS) 및 Counter-UAS 아키텍처 제안</li>
+          <li>AI 기반 자율 요격 알고리즘 및 시스템 확장성</li>
+        </ul>
       </div>
     </article>
 
     <!-- 6 -->
-    <article class="card">
-      <div class="chead"><span class="rk">#6</span><span class="ttl">온디바이스·엣지 탐지 (통신차단·저SWaP)</span><span class="feas f3">가능성 중상</span></div>
-      <div class="en">Edge Inference · DDIL</div>
-      <div class="link"><span class="link__t">주최측 연계</span><span class="link__c">Prairie Schooner · F4GE</span></div>
-      <p class="vision">클라우드 없이 엣지에서 드론 음향·RF·영상 탐지를 실시간 수행하고, 통신차단(DDIL)에서도 자율 동작. 저전력·소형(저SWaP)으로 차량·초소 단위 배치.</p>
-      <p class="fit"><b>팀 적합:</b> <span class="mtag" style="color:var(--lmh)">LMH</span> 임베디드/EV·<span class="mtag" style="color:var(--kjh)">KJH</span> RF·<span class="mtag" style="color:var(--khj)">KHJ</span> 모델 — 엣지 ML 최적화는 추가 학습 필요.</p>
-      <div class="res">
-        <div class="r"><span class="rl">기술스택</span><span class="rv">엣지 ML(<code>TensorRT</code>/ONNX/TFLite) · 모델 양자화·프루닝 · 음향/RF 특징 · C++/Python</span></div>
-        <div class="r"><span class="rl hw">하드웨어</span><span class="rv">Jetson Orin/Nano · 마이크 어레이 · SDR · 저전력 보드 · 배터리</span></div>
-        <div class="r"><span class="rl inf">인프라·자원</span><span class="rv">엣지 디바이스 · (학습용) GPU · 모델 변환 파이프라인 · 드론 음향/RF 데이터셋</span></div>
-      </div>
-    </article>
+    <article class="card" id="c6">
+      <div class="chead"><span class="rk">#6</span><span class="cat">범용</span></div>
+      <div class="ttl">무선침묵 환경 피아식별 (IFF)</div>
+      <div class="en">Radio-silent IFF</div>
 
-    <!-- 7 -->
-    <article class="card">
-      <div class="chead"><span class="rk">#7</span><span class="ttl">저비용 양산형 대드론 센서 노드 (DFM)</span><span class="feas f3">가능성 중상</span></div>
-      <div class="en">Mass-Producible Sensor Node</div>
-      <div class="link"><span class="link__t">주최측 연계</span><span class="link__c">F4GE (국방 양산) · BONE AI</span></div>
-      <p class="vision">도심 사각지대를 덮는 저가 음향·RF 탐지 노드를 양산성(DFM) 기준으로 설계하고, 수십~수백 노드 메시로 광역 커버리지. 노드 간 시간동기로 위치 산출(TDOA).</p>
-      <p class="fit"><b>팀 적합:</b> <span class="mtag" style="color:var(--kjh)">KJH</span> RF·펌웨어·<span class="mtag" style="color:var(--lmh)">LMH</span> 임베디드·양산 노출 — 하드웨어 제작에 시간 소요.</p>
-      <div class="res">
-        <div class="r"><span class="rl">기술스택</span><span class="rv">임베디드 펌웨어 · 메시 네트워킹(LoRa/Wi-Fi) · TDOA 시간동기 · 커버리지 시뮬 · KiCad(PCB)</span></div>
-        <div class="r"><span class="rl hw">하드웨어</span><span class="rv">저가 MCU(ESP32) · MEMS 마이크 · RF 프론트엔드 · PCB 시제품 · 다수 노드</span></div>
-        <div class="r"><span class="rl inf">인프라·자원</span><span class="rv">노드 게이트웨이 · 수집 서버 · 시간동기(GPS/PTP) · PCB 발주·납기</span></div>
+      <div class="blk">
+        <p class="blk__t">// 배경</p>
+        <p class="bg">유무인 복합체계(MUM-T) 환경에서 아군 드론을 운용함과 동시에 적 드론을 무력화하기 위해서는, 전장의 인간 군인과 AI 기반의 무인 체계(기계)가 통신 노출 없이 상호간에 '무엇이 아군이고 무엇이 적인가'를 실시간으로 정확히 식별할 수 있어야 합니다. 그러나 기존의 IFF 체계는 지속적인 신호 방출로 인해 아군의 위치를 노출시키거나, 중간자(MITM) 및 재전송(Replay) 공격에 취약하여 적 드론이 아군으로 위장할 위험이 존재합니다. 따라서 무선 침묵 상태에서도 인간과 기계가 서로를 은밀하게 알아볼 수 있는 피아식별 기술이 필수적이며, 이는 무인 체계의 자율 운용(Autonomy)과 대드론 대응(Counter-UAS) 영역을 유기적으로 연결하는 핵심 고리입니다.</p>
       </div>
-    </article>
 
-    <!-- 8 -->
-    <article class="card">
-      <div class="chead"><span class="rk">#8</span><span class="ttl">자연어 음성 1인–다(多)무인기 오케스트레이션</span><span class="feas f2">가능성 중</span></div>
-      <div class="en">Voice C2 · One-to-Many UAS</div>
-      <div class="link"><span class="link__t">주최측 연계</span><span class="link__c">Prairie Schooner (PEGASUS · DIU 챌린지)</span></div>
-      <p class="vision">운용자가 자연어 음성으로 다수 무인기(정찰·대드론)에게 임무를 동시 배분·조정하고, 통신차단에서도 온디바이스로 동작하는 오케스트레이터. (Prairie PEGASUS급 비전)</p>
-      <p class="fit"><b>팀 적합:</b> <span class="mtag" style="color:var(--khj)">KHJ</span> NL 변환·<span class="mtag" style="color:var(--lmh)">LMH</span> 통신·<span class="mtag" style="color:var(--kjh)">KJH</span> 무인기 운용 — 실드론 통합·통신차단 난도 높아 <b>시뮬로 범위 조절</b> 권장.</p>
-      <div class="res">
-        <div class="r"><span class="rl">기술스택</span><span class="rv">온디바이스 ASR(Whisper/Vosk) · NL→임무 변환(LLM) · 드론 SDK(<code>MAVSDK</code>/DJI) · 멀티에이전트 조정</span></div>
-        <div class="r"><span class="rl hw">하드웨어</span><span class="rv">다수 드론(또는 시뮬) · 전술 단말 · 엣지 컴퓨트 · RF 통신 모듈</span></div>
-        <div class="r"><span class="rl inf">인프라·자원</span><span class="rv">드론 시뮬(Gazebo/AirSim) · 통신 미들웨어 · 엣지 추론 · 비행 허가 공역(실기체 시)</span></div>
+      <div class="mission">
+        <p class="blk__t">// 과제</p>
+        <p>전파 방출을 최소화한 채 아군·적 무인기를 식별할 수 있는 암호학적 2-컴포넌트 피아식별 체계를 개발하라.</p>
+        <p>중간자(MITM)·재전송(replay) 공격에 견딜 수 있는 방향 제시.</p>
       </div>
-    </article>
 
-    <!-- 9 -->
-    <article class="card">
-      <div class="chead"><span class="rk">#9</span><span class="ttl">멀티모달 LM 드론 식별·상황 캡셔닝</span><span class="feas f2">가능성 중</span></div>
-      <div class="en">Multimodal LM Recognition</div>
-      <div class="link"><span class="link__t">주최측 연계</span><span class="link__c">Theta One (백기오) · BONE AI</span></div>
-      <p class="vision">EO/IR 영상·RF·음향을 멀티모달 모델로 융합해 드론/조류/기종을 식별하고 "무엇이·어디서·의도·위협도"를 자연어로 브리핑. 백기오의 멀티모달 LM 전문영역.</p>
-      <p class="fit"><b>팀 적합:</b> <span class="mtag" style="color:var(--khj)">KHJ</span> LLM이지만 <b>멀티모달 학습·데이터 확보 부담</b>(전용 CV/멀티모달 연구자 부재) → 사전학습 VLM 활용 권장.</p>
-      <div class="res">
-        <div class="r"><span class="rl">기술스택</span><span class="rv">사전학습 VLM 파인튜닝 · 멀티모달 융합 · 데이터 라벨링 · <code>PyTorch</code></span></div>
-        <div class="r"><span class="rl hw">하드웨어</span><span class="rv">(학습) GPU · EO/IR 카메라 · SDR · 라벨링 데이터셋</span></div>
-        <div class="r"><span class="rl inf">인프라·자원</span><span class="rv">GPU 학습 환경 · 데이터 파이프라인 · 추론 서빙 · 드론 영상/신호 데이터</span></div>
-      </div>
-    </article>
-
-    <!-- 10 -->
-    <article class="card">
-      <div class="chead"><span class="rk">#10</span><span class="ttl">스웜 대응 자원배분 (강화학습)</span><span class="feas f1">가능성 도전적</span></div>
-      <div class="en">Swarm Response · Reinforcement Learning</div>
-      <div class="link"><span class="link__t">주최측 연계</span><span class="link__c">박민규(강화학습) · Morph · BONE AI</span></div>
-      <p class="vision">수십 기 스웜을 클러스터링하고, 한정된 재머·요격 자원을 강화학습 정책으로 실시간 최적 배분하는 교전 관리 시스템(BMS). 대규모 시뮬 기반 정책 학습.</p>
-      <p class="fit"><b>팀 적합:</b> <b>RL 전문성 부재로 연구 리스크 최상</b> → 규칙기반·휴리스틱 최적화(OR) 대안 병행 권장. 가능성 최하.</p>
-      <div class="res">
-        <div class="r"><span class="rl">기술스택</span><span class="rv">강화학습(RLlib/SB3) · 멀티에이전트 시뮬 · 최적화(OR-Tools) · 시각화</span></div>
-        <div class="r"><span class="rl hw">하드웨어</span><span class="rv">(학습) GPU</span></div>
-        <div class="r"><span class="rl inf">인프라·자원</span><span class="rv">멀티에이전트 시뮬 환경 · GPU 학습 클러스터 · 정책 서빙</span></div>
+      <div class="blk">
+        <p class="blk__t">// 세부 요구사항</p>
+        <ul class="reqs">
+          <li>무선침묵(저방출) 기반 피아식별 프로토콜</li>
+          <li>암호학적 2-컴포넌트 challenge-response 설계</li>
+          <li>MITM·replay 공격 방어 메커니즘</li>
+          <li>아군 드론 운용체계와 대드론 체계 간 식별 정보 공유</li>
+          <li>식별 실패 시 fail-safe 교전규칙 연동</li>
+        </ul>
       </div>
     </article>
 
   </div>
 
   <footer>
-    <span>D4D · TEAM AEGIS — Track 1 (팀 가능성순 · 자원 포함)</span>
+    <span>D4D · TEAM AEGIS — Track 1 공식 과제 (무인체계 · Counter-UAS)</span>
     <span><a href="../">팀소개</a> · <a href="../d4d/">행사 분석</a></span>
   </footer>
 
